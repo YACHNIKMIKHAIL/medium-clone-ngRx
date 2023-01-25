@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
-import { registerAction } from '../../store/register.actions';
+import { registerAction } from '../../store/actions/register.actions';
 import { Observable } from 'rxjs';
 import { isSubmittingSelector } from '../../store/selectors';
-import { AuthService } from '../../services/auth.service';
+import { RegisterRequestInterface } from '../../types/registerRequest.interface';
 
 @Component({
       selector: 'mc-register',
@@ -15,11 +15,7 @@ export class RegisterComponent implements OnInit {
       public form: FormGroup = new FormGroup<any>({});
       public isSubmitting$: Observable<boolean> = new Observable<boolean>();
 
-      constructor(
-            private fb: FormBuilder,
-            private store: Store,
-            private authService: AuthService,
-      ) {}
+      constructor(private fb: FormBuilder, private store: Store) {}
 
       ngOnInit(): void {
             this.initializeForm();
@@ -29,7 +25,15 @@ export class RegisterComponent implements OnInit {
       initializeForm(): void {
             this.form = this.fb.group({
                   username: ['', Validators.required],
-                  email: ['', Validators.required],
+                  email: [
+                        '',
+                        [
+                              Validators.required,
+                              Validators.pattern(
+                                    '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$',
+                              ),
+                        ],
+                  ],
                   password: [
                         '',
                         [Validators.required, Validators.minLength(4)],
@@ -40,12 +44,10 @@ export class RegisterComponent implements OnInit {
       onSubmit(): void {
             console.log(this.form.valid);
             console.log(this.form.value);
-            this.store.dispatch(registerAction(this.form.value));
-            this.authService
-                  .register(this.form.value)
-                  .subscribe(currentUser => {
-                        console.log('currentUser', currentUser);
-                  });
+            const request: RegisterRequestInterface = {
+                  user: this.form.value,
+            };
+            this.store.dispatch(registerAction({ request }));
       }
 
       initializeValues(): void {

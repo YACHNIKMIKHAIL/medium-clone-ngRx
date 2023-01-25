@@ -12,11 +12,10 @@ export class AuthService {
       register(
             data: RegisterRequestInterface,
       ): Observable<CurrentUserInterface> {
+            console.log('register', data);
+            const url = environment.apiUrl + '/users';
             return this.http
-                  .post<AuthResponseInterface>(
-                        environment.apiUrl + '/user',
-                        data,
-                  )
+                  .post<AuthResponseInterface>(url, data)
                   .pipe(map(response => response.user));
       }
 }
