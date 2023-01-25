@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { RegisterRequestInterface } from '../types/registerRequest.interface';
-import { CurrentUserInterface } from '../../shared/currentUser.interface';
+import { CurrentUserInterface } from '../../shared/types/currentUser.interface';
 import { map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment.prod';
