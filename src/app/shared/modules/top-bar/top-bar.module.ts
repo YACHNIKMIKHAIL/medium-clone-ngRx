@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TopBarComponent } from './components/top-bar.component';
-import { RouterLinkWithHref } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
       declarations: [TopBarComponent],
-      imports: [CommonModule, RouterLinkWithHref],
+      imports: [CommonModule, RouterModule],
       exports: [TopBarComponent],
 })
 export class TopBarModule {}

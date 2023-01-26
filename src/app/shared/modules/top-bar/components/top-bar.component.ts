@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import {
+      currentUserSelector,
+      isAnonymousSelector,
+      isLoggedInSelector,
+} from '../../../../auth/store/selectors';
+import { Observable } from 'rxjs';
+import { CurrentUserInterface } from '../../../types/currentUser.interface';
 
 @Component({
       selector: 'mc-top-bar',
@@ -6,7 +14,16 @@ import { Component, OnInit } from '@angular/core';
       styleUrls: ['./top-bar.component.scss'],
 })
 export class TopBarComponent implements OnInit {
-      constructor() {}
+      public isLoggedIn$ = new Observable<boolean | null>();
+      public isAnonymous$ = new Observable<boolean>();
+      public currentUser$ = new Observable<CurrentUserInterface | null>();
+      constructor(private store: Store) {}
 
       ngOnInit(): void {}
+
+      initializeValues(): void {
+            this.isLoggedIn$ = this.store.pipe(select(isLoggedInSelector));
+            this.isLoggedIn$ = this.store.pipe(select(isAnonymousSelector));
+            this.currentUser$ = this.store.pipe(select(currentUserSelector));
+      }
 }
