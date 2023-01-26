@@ -10,7 +10,9 @@ import { PersistenceService } from '../../../shared/services/persistence.service
 import { CurrentUserInterface } from '../../../shared/types/currentUser.interface';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class LoginEffect {
       login$ = createEffect(() =>
             this.actions$.pipe(
