@@ -10,6 +10,10 @@ import {
       loginFailureAction,
       loginSuccessAction,
 } from './actions/login.action';
+import {
+      getCurrentUserFailureAction,
+      getCurrentUserSuccessAction,
+} from './actions/getCurrentUser.actions';
 
 const initialState: AuthStateInterface = {
       isSubmitting: false,
@@ -63,6 +67,17 @@ export const authReducer = createReducer(
             ...state,
             isSubmitting: false,
             validationErrors: action.errors,
+      })),
+      on(getCurrentUserSuccessAction, (state, action) => ({
+            ...state,
+            isSubmitting: true,
+            isLoggedIn: true,
+            currentUser: action.currentUser,
+      })),
+      on(getCurrentUserFailureAction, (state) => ({
+            ...state,
+            isSubmitting: false,
+            isLoggedIn: false,
       })),
 );
 
