@@ -8,12 +8,19 @@ import {
       getCurrentUserFailureAction,
       getCurrentUserSuccessAction,
 } from '../actions/getCurrentUser.actions';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class GetCurrentUserEffect {
       getCurrentUser$ = createEffect(() =>
             this.actions$.pipe(
                   ofType(getCurrentUserAction),
                   switchMap(() => {
+                        const token =
+                              this.persistenceService.get('accessToken');
+                        if (!token) {
+                              return of(getCurrentUserFailureAction());
+                        }
                         return this.authService.getCurrentUser().pipe(
                               map((currentUser: CurrentUserInterface) => {
                                     return getCurrentUserSuccessAction({
