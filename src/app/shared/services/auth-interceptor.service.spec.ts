@@ -1,13 +1,13 @@
 import { TestBed } from "@angular/core/testing";
 
-import { PersistenceService } from "./persistence.service";
+import { AuthInterceptor } from "./auth-interceptor.service";
 
-describe("PersistanceService", () => {
-      let service: PersistenceService;
+describe("AuthInterceptorService", () => {
+      let service: AuthInterceptor;
 
       beforeEach(() => {
             TestBed.configureTestingModule({});
-            service = TestBed.inject(PersistenceService);
+            service = TestBed.inject(AuthInterceptor);
       });
 
       it("should be created", () => {

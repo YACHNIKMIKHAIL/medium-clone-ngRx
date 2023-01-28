@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { BackendErrorsInterface } from '../../../shared/types/backendErrors.interface';
-import { select, Store } from '@ngrx/store';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Observable } from "rxjs";
+import { BackendErrorsInterface } from "../../../shared/types/backendErrors.interface";
+import { select, Store } from "@ngrx/store";
 import {
       isSubmittingSelector,
       validationErrorsSelector,
-} from '../../store/selectors';
-import { LoginRequestInterface } from '../../types/loginRequest.interface';
-import { loginAction } from '../../store/actions/login.action';
+} from "../../store/selectors";
+import { LoginRequestInterface } from "../../types/loginRequest.interface";
+import { loginAction } from "../../store/actions/login.action";
 
 @Component({
-      selector: 'mc-login',
-      templateUrl: './login.component.html',
-      styleUrls: ['./login.component.scss'],
+      selector: "mc-login",
+      templateUrl: "./login.component.html",
+      styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
       public form: FormGroup = new FormGroup<any>({});
@@ -30,16 +30,16 @@ export class LoginComponent implements OnInit {
       initializeForm(): void {
             this.form = this.fb.group({
                   email: [
-                        '',
+                        "",
                         [
                               Validators.required,
                               Validators.pattern(
-                                    '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$',
+                                    "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$",
                               ),
                         ],
                   ],
                   password: [
-                        '',
+                        "",
                         [Validators.required, Validators.minLength(4)],
                   ],
             });

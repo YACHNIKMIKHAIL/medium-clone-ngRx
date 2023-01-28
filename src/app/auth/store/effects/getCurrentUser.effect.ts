@@ -1,14 +1,14 @@
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, of, switchMap } from 'rxjs';
-import { CurrentUserInterface } from '../../../shared/types/currentUser.interface';
-import { AuthService } from '../../services/auth.service';
-import { PersistenceService } from '../../../shared/services/persistence.service';
+import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { catchError, map, of, switchMap } from "rxjs";
+import { CurrentUserInterface } from "../../../shared/types/currentUser.interface";
+import { AuthService } from "../../services/auth.service";
+import { PersistenceService } from "../../../shared/services/persistence.service";
 import {
       getCurrentUserAction,
       getCurrentUserFailureAction,
       getCurrentUserSuccessAction,
-} from '../actions/getCurrentUser.actions';
-import { Injectable } from '@angular/core';
+} from "../actions/getCurrentUser.actions";
+import { Injectable } from "@angular/core";
 
 @Injectable()
 export class GetCurrentUserEffect {
@@ -17,7 +17,7 @@ export class GetCurrentUserEffect {
                   ofType(getCurrentUserAction),
                   switchMap(() => {
                         const token =
-                              this.persistenceService.get('accessToken');
+                              this.persistenceService.get("accessToken");
                         if (!token) {
                               return of(getCurrentUserFailureAction());
                         }

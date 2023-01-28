@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 @Injectable({
-      providedIn: 'root',
+      providedIn: "root",
 })
 export class PersistenceService {
       constructor() {}
@@ -10,14 +10,14 @@ export class PersistenceService {
             try {
                   localStorage.setItem(key, JSON.stringify(data));
             } catch (e) {
-                  console.error('Error to saving to localStorage', e);
+                  console.error("Error to saving to localStorage", e);
             }
       }
       get(key: string): any {
             try {
                   return JSON.parse(localStorage.getItem(key) as string);
             } catch (e) {
-                  console.error('Error to getting from localStorage', e);
+                  console.error("Error to getting from localStorage", e);
                   return null;
             }
       }

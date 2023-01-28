@@ -1,16 +1,16 @@
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from "@ngrx/effects";
 import {
       loginAction,
       loginFailureAction,
       loginSuccessAction,
-} from '../actions/login.action';
-import { catchError, map, of, switchMap, tap } from 'rxjs';
-import { AuthService } from '../../services/auth.service';
-import { PersistenceService } from '../../../shared/services/persistence.service';
-import { CurrentUserInterface } from '../../../shared/types/currentUser.interface';
-import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { Injectable } from '@angular/core';
+} from "../actions/login.action";
+import { catchError, map, of, switchMap, tap } from "rxjs";
+import { AuthService } from "../../services/auth.service";
+import { PersistenceService } from "../../../shared/services/persistence.service";
+import { CurrentUserInterface } from "../../../shared/types/currentUser.interface";
+import { HttpErrorResponse } from "@angular/common/http";
+import { Router } from "@angular/router";
+import { Injectable } from "@angular/core";
 
 @Injectable()
 export class LoginEffect {
@@ -21,7 +21,7 @@ export class LoginEffect {
                         return this.authService.login(request).pipe(
                               map((currentUser: CurrentUserInterface) => {
                                     this.persistenceService.set(
-                                          'accessToken',
+                                          "accessToken",
                                           currentUser.token,
                                     );
                                     return loginSuccessAction({
@@ -46,7 +46,7 @@ export class LoginEffect {
                   this.actions$.pipe(
                         ofType(loginSuccessAction),
                         tap(() => {
-                              this.router.navigateByUrl('/');
+                              this.router.navigateByUrl("/");
                         }),
                   ),
             { dispatch: false },

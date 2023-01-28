@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { BackendErrorMessagesComponent } from './backend-error-messages.component';
+import { BackendErrorMessagesComponent } from "./backend-error-messages.component";
 
-describe('BackendErrorMessagesComponent', () => {
+describe("BackendErrorMessagesComponent", () => {
       let component: BackendErrorMessagesComponent;
       let fixture: ComponentFixture<BackendErrorMessagesComponent>;
 
@@ -16,7 +16,7 @@ describe('BackendErrorMessagesComponent', () => {
             fixture.detectChanges();
       });
 
-      it('should create', () => {
+      it("should create", () => {
             expect(component).toBeTruthy();
       });
 });
