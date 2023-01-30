@@ -13,10 +13,10 @@ export class AuthInterceptor implements HttpInterceptor {
       constructor(private persistenceService: PersistenceService) {}
 
       intercept(
-            req: HttpRequest<any>,
+            request: HttpRequest<any>,
             next: HttpHandler,
       ): Observable<HttpEvent<any>> {
-            const clone = req.clone({
+            const clone = request.clone({
                   setHeaders: {
                         Authorization:
                               `Token ${this.persistenceService.get(
