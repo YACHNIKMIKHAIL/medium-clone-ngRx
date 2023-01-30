@@ -1,14 +1,17 @@
 import { Injectable } from "@angular/core";
-import { Observable, of } from "rxjs";
+import { Observable } from "rxjs";
 import { GetFeedResponseInterface } from "../types/get-feed-response.interface";
+import { environment } from "../../../../../environments/environment";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
       providedIn: "root",
 })
 export class FeedService {
-      constructor() {}
+      constructor(private http: HttpClient) {}
 
       getFeed(url: string): Observable<GetFeedResponseInterface> {
-            return of({} as GetFeedResponseInterface);
+            const fullUrl = environment.apiUrl + url;
+            return this.http.get<GetFeedResponseInterface>(fullUrl);
       }
 }

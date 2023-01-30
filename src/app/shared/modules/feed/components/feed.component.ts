@@ -1,4 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+import { select, Store } from "@ngrx/store";
+import { Observable } from "rxjs";
+import { ArticleInterface } from "../../../types/article.interface";
+import { feedArticlesSelector } from "../store/selectors";
 
 @Component({
       selector: "mc-feed",
@@ -6,7 +10,14 @@ import { Component, OnInit } from "@angular/core";
       styleUrls: ["./feed.component.scss"],
 })
 export class FeedComponent implements OnInit {
-      constructor() {}
+      public feed$ = new Observable<ArticleInterface[]>();
+      constructor(private store: Store) {}
 
-      ngOnInit(): void {}
+      ngOnInit(): void {
+            this.initializeValues();
+      }
+
+      initializeValues(): void {
+            this.feed$ = this.store.pipe(select(feedArticlesSelector));
+      }
 }
