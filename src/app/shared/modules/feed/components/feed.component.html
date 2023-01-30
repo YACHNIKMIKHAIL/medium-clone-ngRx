@@ -1,4 +1,4 @@
-<ng-container *ngIf="!(isLoading$ | async); else isLoading">
+<ng-container *ngIf="isLoading$ | async; else isLoading">
       <ng-container *ngIf="!(error$ | async); else error">
             <ng-container *ngIf="feedArticles$ | async as articles">
                   <div class="article-preview" *ngFor="let article of articles">
@@ -68,4 +68,6 @@
       </ng-template>
 </ng-container>
 
-<ng-template #isLoading> L O A D I N G . . .</ng-template>
+<ng-template #isLoading>
+      <mc-loading></mc-loading>
+</ng-template>

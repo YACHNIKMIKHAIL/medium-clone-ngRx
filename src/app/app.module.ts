@@ -14,6 +14,7 @@ import { AuthInterceptor } from "./shared/services/auth-interceptor.service";
 import { GlobalFeedModule } from "./global-feed/global-feed.module";
 import { BannerModule } from "./shared/modules/banner/banner.module";
 import { ErrorMessageModule } from "./shared/modules/error-messages/error-message.module";
+import { LoadingModule } from "./shared/modules/loading/loading.module";
 
 @NgModule({
       declarations: [AppComponent],
@@ -33,6 +34,7 @@ import { ErrorMessageModule } from "./shared/modules/error-messages/error-messag
             GlobalFeedModule,
             BannerModule,
             ErrorMessageModule,
+            LoadingModule,
       ],
       providers: [
             {
