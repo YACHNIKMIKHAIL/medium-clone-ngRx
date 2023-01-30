@@ -1,1 +1,4 @@
-<p>feed works!</p>
+<p *ngIf="feed$ | async; else no">{{ feed$ | async | json }}</p>
+<ng-template #no>
+      <p>no feed :(</p>
+</ng-template>

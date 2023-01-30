@@ -1,15 +1,28 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { GetFeedResponseInterface } from "../types/get-feed-response.interface";
+import { FeedStateInterface } from "../types/feed-state.interface";
 
 export const feedFeatureSelector =
-      createFeatureSelector<GetFeedResponseInterface>("feed");
+      createFeatureSelector<FeedStateInterface>("feed");
 
 export const feedArticlesSelector = createSelector(
       feedFeatureSelector,
-      (feedState: GetFeedResponseInterface) => feedState.articles,
+      (feedState: FeedStateInterface) => {
+            console.log(feedState);
+            return feedState.data?.articles || [];
+      },
 );
 
 export const feedArticlesCountSelector = createSelector(
       feedFeatureSelector,
-      (feedState: GetFeedResponseInterface) => feedState.articlesCount,
+      (feedState: FeedStateInterface) => feedState.data?.articlesCount || 0,
+);
+
+export const isLoadingSelector = createSelector(
+      feedFeatureSelector,
+      (feedState: FeedStateInterface) => feedState.isLoading,
+);
+
+export const feedErrorSelector = createSelector(
+      feedFeatureSelector,
+      (feedState: FeedStateInterface) => feedState.error,
 );

@@ -19,7 +19,7 @@ export const feedReducer = createReducer(
             ...state,
             isLoading: false,
             error: null,
-            data: { ...action.feed },
+            data: action.feed,
       })),
       on(getFeedFailureAction, state => ({
             ...state,

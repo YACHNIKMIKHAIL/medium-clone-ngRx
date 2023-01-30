@@ -7,7 +7,9 @@ import {
 } from "../actions/get-feed.actions";
 import { FeedService } from "../../services/feed.service";
 import { GetFeedResponseInterface } from "../../types/get-feed-response.interface";
+import { Injectable } from "@angular/core";
 
+@Injectable()
 export class GetFeedEffect {
       getFeed$ = createEffect(() =>
             this.actions$.pipe(
