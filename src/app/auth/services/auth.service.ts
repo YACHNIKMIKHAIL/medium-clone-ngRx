@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { RegisterRequestInterface } from '../types/registerRequest.interface';
-import { CurrentUserInterface } from '../../shared/types/currentUser.interface';
-import { map, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment.prod';
-import { AuthResponseInterface } from '../types/authResponse.interface';
-import { LoginRequestInterface } from '../types/loginRequest.interface';
+import { Injectable } from "@angular/core";
+import { RegisterRequestInterface } from "../types/registerRequest.interface";
+import { CurrentUserInterface } from "../../shared/types/currentUser.interface";
+import { map, Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { environment } from "../../../environments/environment.prod";
+import { AuthResponseInterface } from "../types/authResponse.interface";
+import { LoginRequestInterface } from "../types/loginRequest.interface";
 
 @Injectable()
 export class AuthService {
@@ -15,13 +15,13 @@ export class AuthService {
             data: RegisterRequestInterface,
       ): Observable<CurrentUserInterface> {
             return this.http
-                  .post<AuthResponseInterface>(this.url + '/users', data)
+                  .post<AuthResponseInterface>(this.url + "/users", data)
                   .pipe(this.getUser);
       }
 
       login(data: LoginRequestInterface): Observable<CurrentUserInterface> {
             return this.http
-                  .post<AuthResponseInterface>(this.url + '/users/login', data)
+                  .post<AuthResponseInterface>(this.url + "/users/login", data)
                   .pipe(this.getUser);
       }
 
@@ -33,7 +33,7 @@ export class AuthService {
 
       getCurrentUser(): Observable<CurrentUserInterface> {
             return this.http
-                  .get<AuthResponseInterface>(this.url + '/users')
+                  .get<AuthResponseInterface>(this.url + "/user")
                   .pipe(this.getUser);
       }
 }

@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { getCurrentUserAction } from './auth/store/actions/getCurrentUser.actions';
+import { Component, OnInit } from "@angular/core";
+import { Store } from "@ngrx/store";
+import { getCurrentUserAction } from "./auth/store/actions/getCurrentUser.actions";
 
 @Component({
-      selector: 'app-root',
-      templateUrl: './app.component.html',
+      selector: "app-root",
+      templateUrl: "./app.component.html",
 })
 export class AppComponent implements OnInit {
       constructor(private store: Store) {}

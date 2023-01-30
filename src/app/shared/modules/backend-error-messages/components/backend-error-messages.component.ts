@@ -1,13 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { BackendErrorsInterface } from '../../../types/backendErrors.interface';
+import { Component, Input, OnInit } from "@angular/core";
+import { BackendErrorsInterface } from "../../../types/backendErrors.interface";
 
 @Component({
-      selector: 'mc-backend-error-messages',
-      templateUrl: './backend-error-messages.component.html',
-      styleUrls: ['./backend-error-messages.component.scss'],
+      selector: "mc-backend-error-messages",
+      templateUrl: "./backend-error-messages.component.html",
+      styleUrls: ["./backend-error-messages.component.scss"],
 })
 export class BackendErrorMessagesComponent implements OnInit {
-      @Input('backendErrors')
+      @Input("backendErrors")
       backendErrorsProps: BackendErrorsInterface | null = null;
       errorMessages: string[] = [];
       constructor() {}
@@ -16,7 +16,7 @@ export class BackendErrorMessagesComponent implements OnInit {
             this.errorMessages = Object.keys(this.backendErrorsProps!).map(
                   (name: string) => {
                         const message =
-                              this.backendErrorsProps![name].join(', ');
+                              this.backendErrorsProps![name].join(", ");
                         return `${name} ${message}`;
                   },
             );

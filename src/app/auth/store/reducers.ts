@@ -1,20 +1,20 @@
-import { AuthStateInterface } from '../types/authState.interface';
-import { Action, createReducer, on } from '@ngrx/store';
+import { AuthStateInterface } from "../types/authState.interface";
+import { Action, createReducer, on } from "@ngrx/store";
 import {
       registerAction,
       registerFailureAction,
       registerSuccessAction,
-} from './actions/register.actions';
+} from "./actions/register.actions";
 import {
       loginAction,
       loginFailureAction,
       loginSuccessAction,
-} from './actions/login.action';
+} from "./actions/login.action";
 import {
       getCurrentUserAction,
       getCurrentUserFailureAction,
       getCurrentUserSuccessAction,
-} from './actions/getCurrentUser.actions';
+} from "./actions/getCurrentUser.actions";
 
 const initialState: AuthStateInterface = {
       isSubmitting: false,

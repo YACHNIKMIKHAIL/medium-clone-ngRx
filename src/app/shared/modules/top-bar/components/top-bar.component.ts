@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { select, Store } from '@ngrx/store';
+import { Component, OnInit } from "@angular/core";
+import { select, Store } from "@ngrx/store";
 import {
       currentUserSelector,
       isAnonymousSelector,
       isLoggedInSelector,
-} from '../../../../auth/store/selectors';
-import { Observable } from 'rxjs';
-import { CurrentUserInterface } from '../../../types/currentUser.interface';
+} from "../../../../auth/store/selectors";
+import { Observable } from "rxjs";
+import { CurrentUserInterface } from "../../../types/currentUser.interface";
 
 @Component({
-      selector: 'mc-top-bar',
-      templateUrl: './top-bar.component.html',
-      styleUrls: ['./top-bar.component.scss'],
+      selector: "mc-top-bar",
+      templateUrl: "./top-bar.component.html",
+      styleUrls: ["./top-bar.component.scss"],
 })
 export class TopBarComponent implements OnInit {
       public isLoggedIn$ = new Observable<boolean | null>();
