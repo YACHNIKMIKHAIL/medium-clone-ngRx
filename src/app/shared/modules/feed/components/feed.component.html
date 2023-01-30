@@ -52,18 +52,19 @@
                               </ul>
                         </a></div
                   >
-
-                  <ul
-                        class="pagination"
-                        *ngFor="let count of [1, 2, 3, 4, 5, 6, 7, 8, 9]"
-                        ><li class="page-item"
-                              ><a class="page-link">{{ count }}</a></li
-                        ></ul
-                  >
+                  <mc-pagination
+                        [totalCount]="feedArticlesCount$ | async"
+                        [limit]="limit"
+                        [baseUrl]="baseUrl"
+                        [currentPage]="currentPage"></mc-pagination>
             </ng-container>
       </ng-container>
 
-      <ng-template #error>{{ error$ | async }}</ng-template>
+      <ng-template #error>
+            <mc-error-message [message]="error$ | async"></mc-error-message>
+      </ng-template>
 </ng-container>
 
-<ng-template #isLoading> L O A D I N G . . .</ng-template>
+<ng-template #isLoading>
+      <mc-loading></mc-loading>
+</ng-template>

@@ -12,6 +12,10 @@ import { EffectsModule } from "@ngrx/effects";
 import { TopBarModule } from "./shared/modules/top-bar/top-bar.module";
 import { AuthInterceptor } from "./shared/services/auth-interceptor.service";
 import { GlobalFeedModule } from "./global-feed/global-feed.module";
+import { BannerModule } from "./shared/modules/banner/banner.module";
+import { ErrorMessageModule } from "./shared/modules/error-messages/error-message.module";
+import { LoadingModule } from "./shared/modules/loading/loading.module";
+import { PaginationModule } from "./shared/modules/pagination/pagination.module";
 
 @NgModule({
       declarations: [AppComponent],
@@ -29,6 +33,10 @@ import { GlobalFeedModule } from "./global-feed/global-feed.module";
             EffectsModule.forRoot([]),
             TopBarModule,
             GlobalFeedModule,
+            BannerModule,
+            ErrorMessageModule,
+            LoadingModule,
+            PaginationModule,
       ],
       providers: [
             {
