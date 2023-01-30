@@ -16,8 +16,8 @@ import { getFeedAction } from "../store/actions/get-feed.actions";
       styleUrls: ["./feed.component.scss"],
 })
 export class FeedComponent implements OnInit {
-      public feed$ = new Observable<ArticleInterface[]>();
-      public feedCount$ = new Observable<number>();
+      public feedArticles$ = new Observable<ArticleInterface[]>();
+      public feedArticlesCount$ = new Observable<number | null>();
       public isLoading$ = new Observable<boolean>();
       public error$ = new Observable<string | null>();
       @Input("apiUrl") apiUrlProps!: string;
@@ -29,8 +29,8 @@ export class FeedComponent implements OnInit {
       }
 
       initializeValues(): void {
-            this.feed$ = this.store.pipe(select(feedArticlesSelector));
-            this.feedCount$ = this.store.pipe(
+            this.feedArticles$ = this.store.pipe(select(feedArticlesSelector));
+            this.feedArticlesCount$ = this.store.pipe(
                   select(feedArticlesCountSelector),
             );
             this.isLoading$ = this.store.pipe(select(isLoadingSelector));
