@@ -24,7 +24,7 @@ export const feedReducer = createReducer(
       on(getFeedFailureAction, state => ({
             ...state,
             isLoading: false,
-            error: "some error",
+            error: "Something went wrong !",
             data: null,
       })),
 );

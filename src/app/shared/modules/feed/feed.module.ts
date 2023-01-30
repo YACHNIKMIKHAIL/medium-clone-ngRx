@@ -6,6 +6,7 @@ import { GetFeedEffect } from "./store/effects/get-feed.effect";
 import { StoreModule } from "@ngrx/store";
 import { reducer } from "./store/reducers";
 import { RouterModule } from "@angular/router";
+import { ErrorMessageModule } from "../error-messages/error-message.module";
 
 @NgModule({
       declarations: [FeedComponent],
@@ -15,6 +16,7 @@ import { RouterModule } from "@angular/router";
             StoreModule.forFeature("feed", reducer),
             EffectsModule.forFeature([GetFeedEffect]),
             RouterModule,
+            ErrorMessageModule,
       ],
 })
 export class FeedModule {}

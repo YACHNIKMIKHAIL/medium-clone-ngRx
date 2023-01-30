@@ -63,7 +63,9 @@
             </ng-container>
       </ng-container>
 
-      <ng-template #error>{{ error$ | async }}</ng-template>
+      <ng-template #error>
+            <mc-error-message [message]="error$ | async"></mc-error-message>
+      </ng-template>
 </ng-container>
 
 <ng-template #isLoading> L O A D I N G . . .</ng-template>
