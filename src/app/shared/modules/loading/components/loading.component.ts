@@ -12,6 +12,7 @@ import { interval, map, repeat, take } from "rxjs";
                   "  height: 1rem;\n" +
                   "  background-color: #5cb85c;\n" +
                   "  margin-top: 20px;\n" +
+                  "  margin-bottom: 20px;\n" +
                   "}",
       ],
 })

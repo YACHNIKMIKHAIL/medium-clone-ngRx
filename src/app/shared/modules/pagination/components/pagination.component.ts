@@ -1,10 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import {
-      interval,
-      Observable,
-      take,
-      toArray,
-} from "rxjs";
+import { UtilsService } from "../../../services/utils.service";
 
 @Component({
       selector: "mc-pagination",
@@ -14,17 +9,18 @@ import {
 export class PaginationComponent implements OnInit {
       @Input("totalCount") totalCountProps!: number | null;
       @Input("limit") limitProps = 10;
-      @Input("currentPage") currentPageProps!: number;
+      @Input("currentPage") currentPageProps!: number | null;
       @Input("baseUrl") baseUrlProps!: string;
-      public pageCount$ = new Observable();
-      constructor() {}
+      public pagesCount!: number;
+      public pages!: number[];
+      constructor(private utilsService: UtilsService) {}
 
       ngOnInit(): void {
-            console.log("totalCountProps", this.totalCountProps);
-            this.pageCount$ = interval(1).pipe(
-                  take((this.totalCountProps as number) / this.limitProps),
-                  toArray(),
-            );
-            this.pageCount$.subscribe(d => console.log(d));
+            if (this.totalCountProps) {
+                  this.pagesCount = Math.ceil(
+                        this.totalCountProps / this.limitProps,
+                  );
+                  this.pages = this.utilsService.range(this.pagesCount);
+            }
       }
 }
