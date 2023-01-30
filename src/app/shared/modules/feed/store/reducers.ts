@@ -1,4 +1,3 @@
-import { GetFeedResponseInterface } from "../types/get-feed-response.interface";
 import { Action, createReducer, on } from "@ngrx/store";
 import {
       getFeedAction,
@@ -31,8 +30,8 @@ export const feedReducer = createReducer(
 );
 
 export function reducer(
-      state: GetFeedResponseInterface,
+      state: FeedStateInterface,
       action: Action,
-): GetFeedResponseInterface {
+): FeedStateInterface {
       return feedReducer(state, action);
 }
