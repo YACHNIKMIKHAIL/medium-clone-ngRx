@@ -1,9 +1,64 @@
-<ul class="pagination"
-      ><li *ngFor="let count of pages; let idx = index" class="page-item"
+<ul class="pagination">
+      <li class="page-item"
             ><a
                   class="page-link"
-                  [class.selected]="idx + 1 === currentPageProps"
-                  >{{ count }}</a
+                  [class.selected]="currentPageProps === 1"
+                  [routerLink]="baseUrlProps"
+                  [queryParams]="{ page: 1 }"
+                  [class.disabled]="currentPageProps === 1"
+                  >First</a
+            ></li
+      >
+      <li class="page-item"
+            ><a
+                  class="page-link"
+                  [class.selected]="false"
+                  [routerLink]="baseUrlProps"
+                  [queryParams]="{
+                        page:
+                              currentPageProps && currentPageProps !== 1
+                                    ? currentPageProps - 1
+                                    : 1
+                  }"
+                  [class.disabled]="currentPageProps === 1"
+                  >Prev</a
+            ></li
+      ><li *ngFor="let page of pages" class="page-item"
+            ><a
+                  class="page-link"
+                  [class.selected]="page === currentPageProps"
+                  [routerLink]="baseUrlProps"
+                  [queryParams]="{page}"
+                  >{{ page }}</a
+            ></li
+      >
+      <li class="page-item"
+            ><a
+                  class="page-link"
+                  [class.selected]="false"
+                  [routerLink]="baseUrlProps"
+                  [queryParams]="{
+                        page:
+                              currentPageProps && currentPageProps < pagesCount
+                                    ? currentPageProps + 1
+                                    : currentPageProps
+                  }"
+                  [class.disabled]="
+                        !(currentPageProps && currentPageProps < pagesCount)
+                  "
+                  >Next</a
+            ></li
+      >
+      <li class="page-item"
+            ><a
+                  class="page-link"
+                  [class.selected]="currentPageProps === pagesCount"
+                  [routerLink]="baseUrlProps"
+                  [queryParams]="{
+                        page: pagesCount
+                  }"
+                  [class.disabled]="currentPageProps === pagesCount"
+                  >Last</a
             ></li
       ></ul
 >

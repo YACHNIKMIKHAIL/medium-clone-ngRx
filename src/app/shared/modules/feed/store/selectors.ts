@@ -7,7 +7,6 @@ export const feedFeatureSelector =
 export const feedArticlesSelector = createSelector(
       feedFeatureSelector,
       (feedState: FeedStateInterface) => {
-            console.log(feedState);
             return feedState.data?.articles || [];
       },
 );
