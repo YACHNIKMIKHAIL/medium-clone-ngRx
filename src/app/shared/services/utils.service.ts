@@ -7,10 +7,6 @@ export class UtilsService {
       constructor() {}
 
       public range(value: number): number[] {
-            let res = [];
-            for (let i = 1; i < value; i++) {
-                  res.push(i);
-            }
-            return res;
+            return [...Array(value).keys()].map(el => el + 1);
       }
 }
