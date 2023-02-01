@@ -16,6 +16,7 @@ import { BannerModule } from "./shared/modules/banner/banner.module";
 import { ErrorMessageModule } from "./shared/modules/error-messages/error-message.module";
 import { LoadingModule } from "./shared/modules/loading/loading.module";
 import { PaginationModule } from "./shared/modules/pagination/pagination.module";
+import { routerReducer, StoreRouterConnectingModule } from "@ngrx/router-store";
 
 @NgModule({
       declarations: [AppComponent],
@@ -23,7 +24,7 @@ import { PaginationModule } from "./shared/modules/pagination/pagination.module"
             BrowserModule,
             AppRoutingModule,
             AuthModule,
-            StoreModule.forRoot({}),
+            StoreModule.forRoot({ router: routerReducer }),
             StoreDevtoolsModule.instrument({
                   maxAge: 25,
                   logOnly: environment.production,
@@ -37,6 +38,7 @@ import { PaginationModule } from "./shared/modules/pagination/pagination.module"
             ErrorMessageModule,
             LoadingModule,
             PaginationModule,
+            StoreRouterConnectingModule.forRoot(),
       ],
       providers: [
             {
