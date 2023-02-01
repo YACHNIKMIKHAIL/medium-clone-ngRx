@@ -11,6 +11,7 @@ import {
 import { getFeedAction } from "../store/actions/get-feed.actions";
 import { environment } from "../../../../../environments/environment";
 import { ActivatedRoute, Params, Router } from "@angular/router";
+import * as queryString from "querystring";
 
 @Component({
       selector: "mc-feed",
@@ -34,7 +35,6 @@ export class FeedComponent implements OnInit, OnDestroy {
       ) {}
 
       ngOnInit(): void {
-            this.fetchData();
             this.initializeValues();
             this.initializeListeners();
       }
@@ -53,12 +53,25 @@ export class FeedComponent implements OnInit, OnDestroy {
             this.queryParamsSubscription = this.route.queryParams.subscribe(
                   (params: Params) => {
                         this.currentPage = Number(params["page"] || "1");
+
+                        this.fetchFeed();
                   },
             );
       }
 
-      private fetchData(): void {
-            this.store.dispatch(getFeedAction({ url: this.apiUrlProps }));
+      private fetchFeed(): void {
+            const offset =
+                  this.currentPage &&
+                  this.currentPage * this.limit - this.limit;
+            const parsedUrl = queryString.parse(this.apiUrlProps);
+            const turnedIntoAStringParams = queryString.stringify({
+                  limit: this.limit,
+                  offset,
+                  ...parsedUrl,
+            });
+
+            const apiUrlWithParams = `${this.apiUrlProps}?${turnedIntoAStringParams}`;
+            this.store.dispatch(getFeedAction({ url: apiUrlWithParams }));
       }
 
       ngOnDestroy(): void {
