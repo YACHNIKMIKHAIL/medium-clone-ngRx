@@ -13,10 +13,11 @@ import { TopBarModule } from "./shared/modules/top-bar/top-bar.module";
 import { AuthInterceptor } from "./shared/services/auth-interceptor.service";
 import { GlobalFeedModule } from "./global-feed/global-feed.module";
 import { BannerModule } from "./shared/modules/banner/banner.module";
-import { ErrorMessageModule } from "./shared/modules/error-messages/error-message.module";
+import { ErrorMessageModule } from "./shared/modules/error-message/error-message.module";
 import { LoadingModule } from "./shared/modules/loading/loading.module";
 import { PaginationModule } from "./shared/modules/pagination/pagination.module";
 import { routerReducer, StoreRouterConnectingModule } from "@ngrx/router-store";
+import { TagsModule } from "./shared/modules/tags/tags.module";
 
 @NgModule({
       declarations: [AppComponent],
@@ -39,6 +40,7 @@ import { routerReducer, StoreRouterConnectingModule } from "@ngrx/router-store";
             LoadingModule,
             PaginationModule,
             StoreRouterConnectingModule.forRoot(),
+            TagsModule,
       ],
       providers: [
             {
