@@ -21,6 +21,6 @@ export class LoadingComponent {
       counter$ = this.source.pipe(
             take(100),
             map(value => value + 1),
-            repeat(5),
+            repeat(50),
       );
 }
