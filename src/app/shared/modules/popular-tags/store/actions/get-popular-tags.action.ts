@@ -13,4 +13,5 @@ export const getPopularTagsSuccessAction = createAction(
 
 export const getPopularTagsFailureAction = createAction(
       GetPopularTagsActionTypes.GET_POPULAR_TAGS_FAILURE,
+      props<{ error: string }>(),
 );

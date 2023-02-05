@@ -1,6 +1,7 @@
 import { PopularTagType } from "../../../types/popularTagType";
 
 export interface PopularTagsStateInterface {
-      popularTags: PopularTagType[] | null;
+      data: PopularTagType[] | null;
+      error: string | null;
       isLoading: boolean;
 }

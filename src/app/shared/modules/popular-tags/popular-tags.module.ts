@@ -12,7 +12,7 @@ import { GetPopularTagsEffect } from "./store/effects/get-popular-tags.effect";
       exports: [PopularTagsComponent],
       imports: [
             CommonModule,
-            StoreModule.forFeature("PopularTags", reducer),
+            StoreModule.forFeature("popularTags", reducer),
             EffectsModule.forFeature([GetPopularTagsEffect]),
             LoadingModule,
       ],
