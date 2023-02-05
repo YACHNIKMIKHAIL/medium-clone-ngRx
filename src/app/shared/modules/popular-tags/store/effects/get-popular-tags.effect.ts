@@ -7,6 +7,7 @@ import {
       getPopularTagsSuccessAction,
 } from "../actions/get-popular-tags.action";
 import { PopularTagsService } from "../../services/popular-tags.service";
+import { PopularTagType } from "../../../../types/popularTagType";
 
 @Injectable()
 export class GetPopularTagsEffect {
@@ -14,15 +15,18 @@ export class GetPopularTagsEffect {
             this.actions$.pipe(
                   ofType(getPopularTagsAction),
                   switchMap(() => {
-                        console.log("switchMap");
                         return this.popularTagsService.getPopularTags().pipe(
-                              map((popularTags: any) => {
+                              map((popularTags: PopularTagType[]) => {
                                     return getPopularTagsSuccessAction({
                                           popularTags,
                                     });
                               }),
                               catchError(() => {
-                                    return of(getPopularTagsFailureAction());
+                                    return of(
+                                          getPopularTagsFailureAction({
+                                                error: "get tags error",
+                                          }),
+                                    );
                               }),
                         );
                   }),

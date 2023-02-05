@@ -1,19 +1,27 @@
-<ng-container *ngIf="!(isLoading$ | async); else loading"></ng-container>
-<div class="sidebar"
-      ><p>Popular Tags</p
-      ><div class="tag-list">
-            <ng-container
-                  *ngIf="popularTags$ | async as popularTags; else noTags">
-                  <a
-                        class="tag-default tag-pill"
-                        *ngFor="let popularTag of popularTags">
-                        {{ popularTag }}
-                  </a>
-            </ng-container>
-            <ng-template hidden="" #noTags>
-                  No tags are here... yet.
+<ng-container *ngIf="!(isLoading$ | async); else loading">
+      <div class="sidebar"
+            ><p>Popular Tags</p
+            ><div class="tag-list">
+                  <ng-container *ngIf="!(error$ | async); else error">
+                        <ng-container *ngIf="popularTags$ | async; else noTags">
+                              <a
+                                    class="tag-default tag-pill"
+                                    *ngFor="
+                                          let popularTag of popularTags$ | async
+                                    ">
+                                    {{ popularTag }}
+                              </a>
+                        </ng-container>
+                        <ng-template hidden="" #noTags>
+                              No tags are here... yet.
+                        </ng-template>
+                  </ng-container>
+            </div>
+            <ng-template #error>
+                  {{ error$ | async }}
             </ng-template>
-            <ng-template #loading>
-                  <mc-loading></mc-loading>
-            </ng-template> </div
-></div>
+      </div>
+</ng-container>
+<ng-template #loading>
+      <mc-loading></mc-loading>
+</ng-template>

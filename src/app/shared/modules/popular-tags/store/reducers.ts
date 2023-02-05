@@ -7,23 +7,37 @@ import {
 } from "./actions/get-popular-tags.action";
 
 const initialState: PopularTagsStateInterface = {
-      popularTags: null,
+      data: null,
+      error: null,
       isLoading: false,
 };
 
 export const popularTagsReducer = createReducer(
       initialState,
-      on(getPopularTagsAction, state => ({ ...state, isLoading: true })),
-      on(getPopularTagsSuccessAction, (state, action) => ({
-            ...state,
-            isLoading: false,
-            popularTags: action.popularTags,
-      })),
-      on(getPopularTagsFailureAction, state => ({
-            ...state,
-            isLoading: false,
-            popularTags: null,
-      })),
+      on(
+            getPopularTagsAction,
+            (state): PopularTagsStateInterface => ({
+                  ...state,
+                  isLoading: true,
+            }),
+      ),
+      on(
+            getPopularTagsSuccessAction,
+            (state, action): PopularTagsStateInterface => ({
+                  ...state,
+                  isLoading: false,
+                  data: action.popularTags,
+            }),
+      ),
+      on(
+            getPopularTagsFailureAction,
+            (state, action): PopularTagsStateInterface => ({
+                  ...state,
+                  isLoading: false,
+                  data: null,
+                  error: action.error,
+            }),
+      ),
 );
 
 export function reducer(
