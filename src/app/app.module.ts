@@ -17,7 +17,7 @@ import { ErrorMessageModule } from "./shared/modules/error-message/error-message
 import { LoadingModule } from "./shared/modules/loading/loading.module";
 import { PaginationModule } from "./shared/modules/pagination/pagination.module";
 import { routerReducer, StoreRouterConnectingModule } from "@ngrx/router-store";
-import { TagsModule } from "./shared/modules/tags/tags.module";
+import { TagListModule } from "./shared/modules/tagList/tagList.module";
 
 @NgModule({
       declarations: [AppComponent],
@@ -40,7 +40,7 @@ import { TagsModule } from "./shared/modules/tags/tags.module";
             LoadingModule,
             PaginationModule,
             StoreRouterConnectingModule.forRoot(),
-            TagsModule,
+            TagListModule,
       ],
       providers: [
             {
