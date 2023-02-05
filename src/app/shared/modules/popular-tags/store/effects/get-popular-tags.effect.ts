@@ -15,6 +15,7 @@ export class GetPopularTagsEffect {
             this.actions$.pipe(
                   ofType(getPopularTagsAction),
                   switchMap(() => {
+                        console.log("switchMap");
                         return this.popularTagsService.getPopularTags().pipe(
                               map((popularTags: PopularTagType[]) => {
                                     return getPopularTagsSuccessAction({
