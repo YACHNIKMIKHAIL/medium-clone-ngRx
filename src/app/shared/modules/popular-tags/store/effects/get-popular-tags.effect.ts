@@ -9,11 +9,12 @@ import {
 import { PopularTagsService } from "../../services/popular-tags.service";
 
 @Injectable()
-export class GetPopularTagsEffectEffect {
+export class GetPopularTagsEffect {
       getPopularTagsEffect$ = createEffect(() =>
             this.actions$.pipe(
                   ofType(getPopularTagsAction),
                   switchMap(() => {
+                        console.log("switchMap");
                         return this.popularTagsService.getPopularTags().pipe(
                               map((popularTags: any) => {
                                     return getPopularTagsSuccessAction({

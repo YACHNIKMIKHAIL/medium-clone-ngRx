@@ -10,6 +10,7 @@ export class PopularTagsService {
       constructor(private http: HttpClient) {}
 
       getPopularTags(): Observable<PopularTagType[]> {
+            debugger;
             console.log("PopularTagsService");
             return of([]);
       }
