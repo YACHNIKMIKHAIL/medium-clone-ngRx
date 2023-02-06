@@ -5,14 +5,16 @@
                         class="nav-link"
                         *ngIf="isLoggedIn$ | async"
                         [routerLink]="['/feed']"
-                        [routerLinkActive]="'active'">
+                        [routerLinkActive]="'active'"
+                        [routerLinkActiveOptions]="{ exact: true }">
                         Your Feed
                   </a></li
             ><li class="nav-item"
                   ><a
                         class="nav-link"
                         [routerLink]="['/']"
-                        [routerLinkActive]="'active'">
+                        [routerLinkActive]="'active'"
+                        [routerLinkActiveOptions]="{ exact: true }">
                         Global Feed
                   </a></li
             ><li class="nav-item"
@@ -21,6 +23,7 @@
                         *ngIf="tagNameProps"
                         [routerLink]="['/tags', tagNameProps]"
                         [routerLinkActive]="'active'"
+                        [routerLinkActiveOptions]="{ exact: true }"
                         ><i class="ion-pound"></i>{{ tagNameProps }}
                   </a></li
             ></ul
