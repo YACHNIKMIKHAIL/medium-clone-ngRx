@@ -11,7 +11,9 @@
                               <a
                                     class="tag-default tag-pill"
                                     *ngFor="let popularTag of popularTags"
+
                                     [routerLink]="['/tags/' + popularTag]">
+
                                     {{ popularTag }}
                               </a>
                         </ng-container>
