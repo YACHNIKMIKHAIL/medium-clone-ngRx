@@ -3,12 +3,15 @@
             ><p>Popular Tags</p
             ><div class="tag-list">
                   <ng-container *ngIf="!(error$ | async); else error">
-                        <ng-container *ngIf="popularTags$ | async; else noTags">
+                        <ng-container
+                              *ngIf="
+                                    popularTags$ | async as popularTags;
+                                    else noTags
+                              ">
                               <a
                                     class="tag-default tag-pill"
-                                    *ngFor="
-                                          let popularTag of popularTags$ | async
-                                    ">
+                                    *ngFor="let popularTag of popularTags"
+                                    [routerLink]="['/tags' + popularTag]">
                                     {{ popularTag }}
                               </a>
                         </ng-container>
