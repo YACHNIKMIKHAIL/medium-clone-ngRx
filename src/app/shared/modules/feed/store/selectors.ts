@@ -25,9 +25,3 @@ export const feedErrorSelector = createSelector(
       feedFeatureSelector,
       (feedState: FeedStateInterface) => feedState.error,
 );
-
-export const feedSlugSelector = createSelector(
-      feedFeatureSelector,
-      (feedState: FeedStateInterface) =>
-            feedState.data?.articles[0].slug || null,
-);
