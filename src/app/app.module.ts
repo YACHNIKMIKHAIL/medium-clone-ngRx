@@ -20,6 +20,7 @@ import { routerReducer, StoreRouterConnectingModule } from "@ngrx/router-store";
 import { TagListModule } from "./shared/modules/tagList/tagList.module";
 import { YourFeedModule } from "./your-feed/your-feed.module";
 import { PopularTagFeedModule } from "./popular-tag-feed/popular-tag-feed.module";
+import { ArticleModule } from "./article/article.module";
 
 @NgModule({
       declarations: [AppComponent],
@@ -45,6 +46,7 @@ import { PopularTagFeedModule } from "./popular-tag-feed/popular-tag-feed.module
             TagListModule,
             YourFeedModule,
             PopularTagFeedModule,
+            ArticleModule,
       ],
       providers: [
             {
