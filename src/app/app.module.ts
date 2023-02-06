@@ -19,6 +19,7 @@ import { PaginationModule } from "./shared/modules/pagination/pagination.module"
 import { routerReducer, StoreRouterConnectingModule } from "@ngrx/router-store";
 import { TagListModule } from "./shared/modules/tagList/tagList.module";
 import { YourFeedModule } from "./your-feed/your-feed.module";
+import { PopularTagFeedModule } from "./popular-tag-feed/popular-tag-feed.module";
 
 @NgModule({
       declarations: [AppComponent],
@@ -43,6 +44,7 @@ import { YourFeedModule } from "./your-feed/your-feed.module";
             StoreRouterConnectingModule.forRoot(),
             TagListModule,
             YourFeedModule,
+            PopularTagFeedModule,
       ],
       providers: [
             {
