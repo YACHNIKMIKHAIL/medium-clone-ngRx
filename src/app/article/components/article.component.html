@@ -1,0 +1,68 @@
+<!--<ng-container *ngIf="!(isLoading$ | async); else isLoading">-->
+<!--      <ng-container *ngIf="!(error$ | async); else error">-->
+<!--            <ng-container *ngIf="!!(article$ | async)?.length; else noArticles">-->
+<!--                  <div-->
+<!--                        class="article-preview"-->
+<!--                        *ngFor="let article of article$ | async">-->
+<!--                        <div>-->
+<!--                              <div class="article-meta"-->
+<!--                                    ><a-->
+<!--                                          [routerLink]="[-->
+<!--                                                '/profile',-->
+<!--                                                article.author.username-->
+<!--                                          ]"-->
+<!--                                          ><img-->
+<!--                                                [src]="article.author.image"-->
+<!--                                                alt="image"-->
+<!--                                    /></a>-->
+<!--                                    <div class="info"-->
+<!--                                          ><a-->
+<!--                                                class="author"-->
+<!--                                                [routerLink]="[-->
+<!--                                                      '/profile',-->
+<!--                                                      article.author.username-->
+<!--                                                ]">-->
+<!--                                                {{ article.author.username }}</a-->
+<!--                                          ><span class="date">-->
+<!--                                                {{ article.updatedAt | date }}-->
+<!--                                          </span></div-->
+<!--                                    >-->
+<!--                                    <div class="pull-xs-right">-->
+<!--                                          <button-->
+<!--                                                class="btn btn-sm btn-outline-primary"-->
+<!--                                                ><i class="ion-heart"></i>-->
+<!--                                                {{-->
+<!--                                                      article.favoritesCount-->
+<!--                                                }}</button-->
+<!--                                          >-->
+<!--                                    </div>-->
+<!--                              </div>-->
+<!--                        </div>-->
+<!--                        <a-->
+<!--                              class="preview-link"-->
+<!--                              [routerLink]="['/article', article.slug]"-->
+<!--                              ><h1>{{ article.title }}</h1>-->
+<!--                              <p>{{ article.description }}</p-->
+<!--                              ><span>Read more...</span>-->
+<!--                              <mc-tag-list-->
+<!--                                    [tagList]="-->
+<!--                                          article.tagList-->
+<!--                                    "></mc-tag-list> </a-->
+<!--                  ></div>-->
+<!--                  <mc-pagination-->
+<!--                        [totalCount]="feedArticlesCount$ | async"-->
+<!--                        [limit]="limit"-->
+<!--                        [baseUrl]="baseUrl"-->
+<!--                        [currentPage]="currentPage"></mc-pagination>-->
+<!--            </ng-container>-->
+<!--            <ng-template #noArticles> No articles yet :( </ng-template>-->
+<!--      </ng-container>-->
+
+<!--      <ng-template #error>-->
+<!--            <mc-error-message [message]="error$ | async"></mc-error-message>-->
+<!--      </ng-template>-->
+<!--</ng-container>-->
+
+<!--<ng-template #isLoading>-->
+<!--      <mc-loading></mc-loading>-->
+<!--</ng-template>-->
