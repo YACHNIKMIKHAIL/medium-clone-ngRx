@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { YourFeedComponent } from "./components/your-feed.component";
+import { PopularTagFeedComponent } from "./components/popular-tag-feed.component";
 import { RouterModule, Routes } from "@angular/router";
 import { BannerModule } from "../shared/modules/banner/banner.module";
 import { FeedToggleModule } from "../shared/modules/toggle-feed/feed-toggle.module";
@@ -9,13 +9,13 @@ import { PopularTagsModule } from "../shared/modules/popular-tags/popular-tags.m
 
 const routes: Routes = [
       {
-            path: "feed",
-            component: YourFeedComponent,
+            path: "tags/:slug",
+            component: PopularTagFeedComponent,
       },
 ];
 
 @NgModule({
-      declarations: [YourFeedComponent],
+      declarations: [PopularTagFeedComponent],
       imports: [
             CommonModule,
             RouterModule.forChild(routes),
@@ -25,4 +25,4 @@ const routes: Routes = [
             PopularTagsModule,
       ],
 })
-export class YourFeedModule {}
+export class PopularTagFeedModule {}

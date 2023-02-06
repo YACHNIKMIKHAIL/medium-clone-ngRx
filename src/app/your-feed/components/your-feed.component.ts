@@ -8,7 +8,7 @@ import { Store } from "@ngrx/store";
       styleUrls: ["./your-feed.component.scss"],
 })
 export class YourFeedComponent extends GlobalFeedComponent {
-      public override url = "/articles/feed"; //"/articles/feed?limit=10&off"
+      public override url = "/articles/feed";
       constructor(store: Store) {
             super(store);
       }
