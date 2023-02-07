@@ -33,7 +33,9 @@
                                           'edit'
                                     ]"
                                     ><i class="ion-edit"></i> Edit Article </a
-                              ><button class="btn btn-sm btn-outline-danger"
+                              ><button
+                                    class="btn btn-sm btn-outline-danger"
+                                    (click)="deleteArticle(article.slug)"
                                     ><i class="ion-trash-a"></i>
                                     Delete Article
                               </button></span

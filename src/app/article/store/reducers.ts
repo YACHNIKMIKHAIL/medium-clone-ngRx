@@ -2,6 +2,9 @@ import { Action, createReducer, on } from "@ngrx/store";
 import { ArticleStateInterface } from "../types/article-state.interface";
 import { routerNavigatedAction } from "@ngrx/router-store";
 import {
+      deleteArticleAction,
+      deleteArticleFailureAction,
+      deleteArticleSuccessAction,
       getArticleAction,
       getArticleFailureAction,
       getArticleSuccessAction,
@@ -31,6 +34,21 @@ export const articleReducer = createReducer(
             data: null,
       })),
       on(routerNavigatedAction, (): ArticleStateInterface => initialState),
+      on(deleteArticleAction, state => ({ ...state, isLoading: true })),
+      on(deleteArticleSuccessAction, (state) => {
+            return {
+                  ...state,
+                  isLoading: false,
+                  error: null,
+                  data: null,
+            };
+      }),
+      on(deleteArticleFailureAction, state => ({
+            ...state,
+            isLoading: false,
+            error: "Something with fetch article went wrong !",
+            data: null,
+      })),
 );
 
 export function reducer(
