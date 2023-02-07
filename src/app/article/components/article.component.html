@@ -82,10 +82,10 @@
                                                 class="author"
                                                 href="/profile/Anah%20Bene%C5%A1ov%C3%A1">
                                                 {{
-                                                      article?.author?.username
+                                                      article.author.username
                                                 }} </a
                                           ><span class="date">
-                                                {{ article?.updatedAt | date }}
+                                                {{ article.updatedAt | date }}
                                           </span></div
                                     >
                                     <span *ngIf="isAuthor$ | async"
