@@ -8,6 +8,7 @@ import { reducer } from "./store/reducers";
 import { RouterModule, Routes } from "@angular/router";
 import { ErrorMessageModule } from "../shared/modules/error-message/error-message.module";
 import { LoadingModule } from "../shared/modules/loading/loading.module";
+import { TagListModule } from "../shared/modules/tagList/tagList.module";
 
 const routes: Routes = [
       {
@@ -25,6 +26,7 @@ const routes: Routes = [
             ErrorMessageModule,
             LoadingModule,
             RouterModule.forChild(routes),
+            TagListModule,
       ],
 })
 export class ArticleModule {}

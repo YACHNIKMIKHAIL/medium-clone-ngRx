@@ -1,199 +1,177 @@
-<ng-container *ngIf="!(isLoading$ | async); else loading">
-      <ng-container *ngIf="!(error$ | async); else error">
-            <div class="article-page" *ngIf="article"
-                  ><div class="banner"
-                        ><div class="container"
-                              ><h1>{{ article.slug }} </h1
-                              ><div
-                                    ><div class="article-meta"
-                                          ><a
-                                                href="/profile/Anah%20Bene%C5%A1ov%C3%A1"
-                                                ><img
-                                                      alt="article author image"
-                                                      [src]="
-                                                            article.author.image
-                                                      " /></a
-                                          ><div class="info"
-                                                ><a
-                                                      class="author"
-                                                      href="/profile/Anah%20Bene%C5%A1ov%C3%A1">
-                                                      {{
-                                                            article.author
-                                                                  .username
-                                                      }} </a
-                                                ><span class="date">
-                                                      {{
-                                                            article.updatedAt
-                                                                  | date
-                                                      }}
-                                                </span></div
-                                          ><span hidden=""
-                                                ><a
-                                                      class="btn btn-sm btn-outline-secondary"
-                                                      href="/editor/If-we-quantify-the-alarm-we-can-get-to-the-FTP-pixel-through-the-online-SSL-interface!-120863"
-                                                      ><i class="ion-edit"></i>
-                                                      Edit Article </a
-                                                ><button
-                                                      class="btn btn-sm btn-outline-danger"
-                                                      ><i
-                                                            class="ion-trash-a"></i>
-                                                      Delete Article
-                                                </button></span
-                                          ><span
-                                                ><div
-                                                      ><button
-                                                            class="btn btn-sm action-btn btn-secondary"
-                                                            ><i
-                                                                  class="ion-plus-round"></i>
-                                                            &nbsp; Unfollow
-                                                            {{
-                                                                  article.author
-                                                                        .username
-                                                            }}
-                                                      </button></div
-                                                ><div
-                                                      ><button
-                                                            class="btn btn-sm btn-outline-primary"
-                                                            ><i
-                                                                  class="ion-heart"></i>
-                                                            Favorite Article
-                                                            <span
-                                                                  class="counter"
-                                                                  >{{
-                                                                        article.favoritesCount
-                                                                  }}</span
-                                                            ></button
-                                                      ></div
-                                                ></span
-                                          ></div
-                                    ></div
-                              ></div
+<div class="article-page">
+      <div class="banner">
+            <div class="container" *ngIf="article"
+                  ><h1>{{ article.title }} </h1>
+                  <div class="article-meta"
+                        ><a
+                              [routerLink]="[
+                                    '/profiles',
+                                    article.author.username
+                              ]"
+                              ><img
+                                    alt="article author image"
+                                    [src]="article.author.image"
+                        /></a>
+                        <div class="info"
+                              ><a
+                                    class="author"
+                                    [routerLink]="[
+                                          '/profiles',
+                                          article.author.username
+                                    ]">
+                                    {{ article.author.username }} </a
+                              ><span class="date">
+                                    {{ article.updatedAt | date }}
+                              </span></div
+                        >
+                        <span *ngIf="isAuthor$ | async"
+                              ><a
+                                    class="btn btn-sm btn-outline-secondary"
+                                    [routerLink]="[
+                                          '/articles',
+                                          article.slug,
+                                          'edit'
+                                    ]"
+                                    ><i class="ion-edit"></i> Edit Article </a
+                              ><button class="btn btn-sm btn-outline-danger"
+                                    ><i class="ion-trash-a"></i>
+                                    Delete Article
+                              </button></span
+                        ><span *ngIf="!(isAuthor$ | async)"
+                              ><button
+                                    class="btn btn-sm action-btn btn-secondary"
+                                    ><i class="ion-plus-round"></i>
+                                    &nbsp; Unfollow
+                                    {{ article.author.username }} </button
+                              ><button class="btn btn-sm btn-outline-primary"
+                                    ><i class="ion-heart"></i>
+                                    Favorite Article
+                                    <span class="counter">{{
+                                          article.favoritesCount
+                                    }}</span></button
+                              ></span
                         ></div
-                  ><div class="container page"
-                        ><div class="row article-content"
-                              ><div class="col-md-12"
-                                    ><div
-                                          ><p>{{ article.body }}</p> </div
-                                    ><ul class="tag-list"
-                                          ><li
-                                                *ngFor="
-                                                      let tag of article.tagList
-                                                "
-                                                class="tag-default tag-pill tag-outline">
-                                                {{ tag }}
-                                          </li></ul
-                                    ></div
-                              ></div
-                        ><hr /><div class="article-actions"
-                              ><div
-                                    ><div class="article-meta"
+                  >
+            </div>
+      </div>
+      <div class="container page">
+            <ng-container *ngIf="!(isLoading$ | async); else loading">
+                  <ng-container *ngIf="!(error$ | async); else error">
+                        <div class="row article-content" *ngIf="article">
+                              <div class="col-md-12">
+                                    <div
+                                          ><p>{{ article.body }}</p></div
+                                    >
+                                    <mc-tag-list
+                                          [tagList]="
+                                                article.tagList
+                                          "></mc-tag-list>
+                              </div>
+                        </div>
+                        <hr />
+                        <div class="article-actions" *ngIf="article">
+                              <div class="article-meta"
+                                    ><a
+                                          href="/profile/Anah%20Bene%C5%A1ov%C3%A1"
+                                          ><img
+                                                alt="article author image"
+                                                src="https://api.realworld.io/images/demo-avatar.png"
+                                    /></a>
+                                    <div class="info"
                                           ><a
-                                                href="/profile/Anah%20Bene%C5%A1ov%C3%A1"
-                                                ><img
-                                                      alt="article author image"
-                                                      src="https://api.realworld.io/images/demo-avatar.png" /></a
-                                          ><div class="info"
-                                                ><a
-                                                      class="author"
-                                                      href="/profile/Anah%20Bene%C5%A1ov%C3%A1">
-                                                      {{
-                                                            article.author
-                                                                  .username
-                                                      }} </a
-                                                ><span class="date">
-                                                      {{
-                                                            article.updatedAt
-                                                                  | date
-                                                      }}
-                                                </span></div
-                                          ><span hidden=""
-                                                ><a
-                                                      class="btn btn-sm btn-outline-secondary"
-                                                      href="/editor/If-we-quantify-the-alarm-we-can-get-to-the-FTP-pixel-through-the-online-SSL-interface!-120863"
-                                                      ><i class="ion-edit"></i>
-                                                      Edit Article </a
-                                                ><button
-                                                      class="btn btn-sm btn-outline-danger"
-                                                      ><i
-                                                            class="ion-trash-a"></i>
-                                                      Delete Article
-                                                </button></span
-                                          ><span
-                                                ><div
-                                                      ><button
-                                                            class="btn btn-sm action-btn btn-secondary"
-                                                            ><i
-                                                                  class="ion-plus-round"></i>
-                                                            &nbsp; Unfollow
-                                                            {{
-                                                                  article.author
-                                                                        .username
-                                                            }}
-                                                      </button></div
-                                                ><div
-                                                      ><button
-                                                            class="btn btn-sm btn-outline-primary"
-                                                            ><i
-                                                                  class="ion-heart"></i>
-                                                            Favorite Article
-                                                            <span
-                                                                  class="counter"
-                                                                  >{{
-                                                                        article.favoritesCount
-                                                                  }}</span
-                                                            ></button
-                                                      ></div
-                                                ></span
-                                          ></div
-                                    ></div
-                              ></div
-                        ><div class="row"
-                              ><div class="col-xs-12 col-md-8 offset-md-2"
-                                    ><div
-                                          ><div
-                                                ><ul
-                                                      class="error-messages"></ul></div
-                                          ><form
+                                                class="author"
+                                                href="/profile/Anah%20Bene%C5%A1ov%C3%A1">
+                                                {{
+                                                      article?.author?.username
+                                                }} </a
+                                          ><span class="date">
+                                                {{ article?.updatedAt | date }}
+                                          </span></div
+                                    >
+                                    <span *ngIf="isAuthor$ | async"
+                                          ><a
+                                                class="btn btn-sm btn-outline-secondary"
+                                                [routerLink]="[
+                                                      '/articles',
+                                                      article.slug,
+                                                      '/edit'
+                                                ]"
+                                                ><i class="ion-edit"></i> Edit
+                                                Article </a
+                                          ><button
+                                                class="btn btn-sm btn-outline-danger"
+                                                ><i class="ion-trash-a"></i>
+                                                Delete Article
+                                          </button></span
+                                    ><span *ngIf="!(isAuthor$ | async)"
+                                          ><button
+                                                class="btn btn-sm action-btn btn-secondary"
+                                                ><i class="ion-plus-round"></i>
+                                                &nbsp; Unfollow
+                                                {{
+                                                      article.author.username
+                                                }} </button
+                                          ><button
+                                                class="btn btn-sm btn-outline-primary"
+                                                ><i class="ion-heart"></i>
+                                                Favorite Article
+                                                <span class="counter">{{
+                                                      article.favoritesCount
+                                                }}</span></button
+                                          ></span
+                                    >
+                              </div>
+                        </div>
+                        <div class="row">
+                              <div class="col-xs-12 col-md-8 offset-md-2">
+                                    <div>
+                                          <div>
+                                                <ul class="error-messages"></ul>
+                                          </div>
+                                          <form
                                                 class="card comment-form ng-untouched ng-pristine ng-valid"
-                                                novalidate=""
-                                                ><fieldset
-                                                      ><div class="card-block">
+                                                novalidate="">
+                                                <fieldset>
+                                                      <div class="card-block">
                                                             <textarea
                                                                   class="form-control ng-untouched ng-pristine ng-valid"
                                                                   placeholder="Write a comment..."
-                                                                  rows="3"></textarea></div
-                                                      ><div class="card-footer"
+                                                                  rows="3"></textarea>
+                                                      </div>
+                                                      <div class="card-footer"
                                                             ><img
                                                                   alt="article author image"
                                                                   class="comment-author-img"
-                                                                  src="https://api.realworld.io/images/smiley-cyrus.jpeg" /><button
+                                                                  src="https://api.realworld.io/images/smiley-cyrus.jpeg" />
+                                                            <button
                                                                   class="btn btn-sm btn-primary"
                                                                   type="submit">
                                                                   Post Comment
-                                                            </button></div
-                                                      ></fieldset
-                                                ></form
-                                          ></div
-                                    ></div
-                              ></div
-                        ></div
-                  ></div
-            >
-            <footer
-                  ><div class="container"
-                        ><a class="logo-font" routerlink="/" href="/">conduit</a
-                        ><span class="attribution">
-                              © 2023. An interactive learning project from
-                              <a href="https://thinkster.io">Thinkster</a>. Code
-                              licensed under MIT.
-                        </span></div
-                  ></footer
-            >
-      </ng-container>
-      <ng-template #error>
-            <mc-error-message></mc-error-message>
-      </ng-template>
-</ng-container>
-<ng-template #loading>
-      <mc-loading></mc-loading>
-</ng-template>
+                                                            </button>
+                                                      </div>
+                                                </fieldset>
+                                          </form>
+                                    </div>
+                              </div>
+                        </div>
+                  </ng-container>
+                  <ng-template #error>
+                        <mc-error-message></mc-error-message>
+                  </ng-template>
+            </ng-container>
+
+            <ng-template #loading>
+                  <mc-loading></mc-loading>
+            </ng-template>
+      </div>
+</div>
+<footer>
+      <div class="container"
+            ><a class="logo-font" routerlink="/" href="/">conduit</a
+            ><span class="attribution">
+                  © 2023. An interactive learning project from
+                  <a href="https://thinkster.io">Thinkster</a>. Code licensed
+                  under MIT.
+            </span></div
+      >
+</footer>
