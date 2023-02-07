@@ -4,7 +4,7 @@ import { PopularTagsStateInterface } from "../modules/popular-tags/types/popular
 import { ArticleStateInterface } from "../../article/types/article-state.interface";
 
 export interface AppStateInterface {
-      auth: AuthStateInterface; //conflict 1
+      auth: AuthStateInterface;
       feed: FeedStateInterface;
       popularTags: PopularTagsStateInterface;
       article: ArticleStateInterface;

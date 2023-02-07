@@ -1,68 +1,183 @@
-<!--<ng-container *ngIf="!(isLoading$ | async); else isLoading">-->
-<!--      <ng-container *ngIf="!(error$ | async); else error">-->
-<!--            <ng-container *ngIf="!!(article$ | async)?.length; else noArticles">-->
-<!--                  <div-->
-<!--                        class="article-preview"-->
-<!--                        *ngFor="let article of article$ | async">-->
-<!--                        <div>-->
-<!--                              <div class="article-meta"-->
+article$:{{ article$ | async | json }}<br />
+isLoading$:{{ isLoading$ | async | json }}<br />
+error$:{{ error$ | async | json }}
+<!--<div class="article-page"-->
+<!--      ><div class="banner"-->
+<!--            ><div class="container"-->
+<!--                  ><h1-->
+<!--                        >If we quantify the alarm, we can get to the FTP pixel-->
+<!--                        through the online SSL interface!-->
+<!--</h1-->
+<!--                  ><div-->
+<!--                        ><div class="article-meta"-->
+<!--                              ><a href="/profile/Anah%20Bene%C5%A1ov%C3%A1"-->
+<!--                                    ><img-->
+<!--                                          src="https://api.realworld.io/images/demo-avatar.png" /></a-->
+<!--                              ><div class="info"-->
 <!--                                    ><a-->
-<!--                                          [routerLink]="[-->
-<!--                                                '/profile',-->
-<!--                                                article.author.username-->
-<!--                                          ]"-->
-<!--                                          ><img-->
-<!--                                                [src]="article.author.image"-->
-<!--                                                alt="image"-->
-<!--                                    /></a>-->
-<!--                                    <div class="info"-->
-<!--                                          ><a-->
-<!--                                                class="author"-->
-<!--                                                [routerLink]="[-->
-<!--                                                      '/profile',-->
-<!--                                                      article.author.username-->
-<!--                                                ]">-->
-<!--                                                {{ article.author.username }}</a-->
-<!--                                          ><span class="date">-->
-<!--                                                {{ article.updatedAt | date }}-->
-<!--                                          </span></div-->
-<!--                                    >-->
-<!--                                    <div class="pull-xs-right">-->
-<!--                                          <button-->
+<!--                                          class="author"-->
+<!--                                          href="/profile/Anah%20Bene%C5%A1ov%C3%A1">-->
+<!--                                          Anah Benešová </a-->
+<!--                                    ><span class="date">-->
+<!--                                          December 9, 2022-->
+<!--                                    </span></div-->
+<!--                              ><span hidden=""-->
+<!--                                    ><a-->
+<!--                                          class="btn btn-sm btn-outline-secondary"-->
+<!--                                          href="/editor/If-we-quantify-the-alarm-we-can-get-to-the-FTP-pixel-through-the-online-SSL-interface!-120863"-->
+<!--                                          ><i class="ion-edit"></i> Edit Article </a-->
+<!--                                    ><button-->
+<!--                                          class="btn btn-sm btn-outline-danger"-->
+<!--                                          ><i class="ion-trash-a"></i> Delete-->
+<!--                                          Article-->
+<!--                                    </button></span-->
+<!--                              ><span-->
+<!--                                    ><div-->
+<!--                                          ><button-->
+<!--                                                class="btn btn-sm action-btn btn-secondary"-->
+<!--                                                ><i class="ion-plus-round"></i>-->
+<!--                                                &nbsp; Unfollow Anah Benešová-->
+<!--                                          </button></div-->
+<!--                                    ><div-->
+<!--                                          ><button-->
 <!--                                                class="btn btn-sm btn-outline-primary"-->
 <!--                                                ><i class="ion-heart"></i>-->
-<!--                                                {{-->
-<!--                                                      article.favoritesCount-->
-<!--                                                }}</button-->
-<!--                                          >-->
-<!--                                    </div>-->
-<!--                              </div>-->
-<!--                        </div>-->
-<!--                        <a-->
-<!--                              class="preview-link"-->
-<!--                              [routerLink]="['/article', article.slug]"-->
-<!--                              ><h1>{{ article.title }}</h1>-->
-<!--                              <p>{{ article.description }}</p-->
-<!--                              ><span>Read more...</span>-->
-<!--                              <mc-tag-list-->
-<!--                                    [tagList]="-->
-<!--                                          article.tagList-->
-<!--                                    "></mc-tag-list> </a-->
-<!--                  ></div>-->
-<!--                  <mc-pagination-->
-<!--                        [totalCount]="feedArticlesCount$ | async"-->
-<!--                        [limit]="limit"-->
-<!--                        [baseUrl]="baseUrl"-->
-<!--                        [currentPage]="currentPage"></mc-pagination>-->
-<!--            </ng-container>-->
-<!--            <ng-template #noArticles> No articles yet :( </ng-template>-->
-<!--      </ng-container>-->
-
-<!--      <ng-template #error>-->
-<!--            <mc-error-message [message]="error$ | async"></mc-error-message>-->
-<!--      </ng-template>-->
-<!--</ng-container>-->
-
-<!--<ng-template #isLoading>-->
-<!--      <mc-loading></mc-loading>-->
-<!--</ng-template>-->
+<!--                                                Favorite Article-->
+<!--                                                <span class="counter"-->
+<!--                                                      >(370)</span-->
+<!--                                                ></button-->
+<!--                                          ></div-->
+<!--                                    ></span-->
+<!--                              ></div-->
+<!--                        ></div-->
+<!--                  ></div-->
+<!--            ></div-->
+<!--      ><div class="container page"-->
+<!--            ><div class="row article-content"-->
+<!--                  ><div class="col-md-12"-->
+<!--                        ><div-->
+<!--                              ><p-->
+<!--                                    >Quia quo iste et aperiam voluptas-->
+<!--                                    consectetur a omnis et.\nDolores et earum-->
+<!--                                    consequuntur sunt et.\nEa nulla ab-->
+<!--                                    voluptatem dicta vel. Temporibus aut-->
+<!--                                    adipisci magnam aliquam eveniet nihil-->
+<!--                                    laudantium reprehenderit sit.\nAspernatur-->
+<!--                                    cumque labore voluptates mollitia deleniti-->
+<!--                                    et. Quos pariatur tenetur.\nQuasi omnis-->
+<!--                                    eveniet eos maiores esse magni possimus-->
+<!--                                    blanditiis.\nQui incidunt sit quos-->
+<!--                                    consequatur aut qui et aperiam-->
+<!--                                    delectus.\nPraesentium quas culpa.\nEaque-->
+<!--                                    occaecati cumque incidunt et. Provident-->
+<!--                                    saepe omnis non molestiae natus-->
+<!--                                    et.\nAccusamus laudantium hic unde voluptate-->
+<!--                                    et sunt voluptatem.\nMollitia velit id eius-->
+<!--                                    mollitia occaecati repudiandae. Voluptatum-->
+<!--                                    tempora voluptas est odio iure odio-->
+<!--                                    dolorem.\nVoluptatum est deleniti explicabo-->
+<!--                                    explicabo harum provident quis molestiae.-->
+<!--                                    Sed dolores nostrum quis. Aut ipsa et qui-->
+<!--                                    vel similique sed hic a.\nVoluptates dolorem-->
+<!--                                    culpa nihil aut ipsam voluptatem. Cupiditate-->
+<!--                                    officia voluptatum.\nTenetur facere eum-->
+<!--                                    distinctio animi qui laboriosam.\nQuod sed-->
+<!--                                    voluptatem et cumque est eos.\nSint id-->
+<!--                                    provident suscipit harum odio et. Facere-->
+<!--                                    beatae delectus ut.\nPossimus voluptas-->
+<!--                                    perspiciatis voluptatem nihil sint-->
+<!--                                    praesentium.\nSint est nihil voluptates-->
+<!--                                    nesciunt voluptatibus temporibus-->
+<!--                                    blanditiis.\nOfficiis voluptatem earum sed.-->
+<!--                                    Deserunt ab porro similique est accusamus id-->
+<!--                                    enim aut suscipit.\nSoluta reprehenderit-->
+<!--                                    error nesciunt odit veniam sed.\nDolore-->
+<!--                                    optio qui aut ab.\nAut minima provident eius-->
+<!--                                    repudiandae a quibusdam in nisi quam.</p-->
+<!--                              > </div-->
+<!--                        ><ul class="tag-list"-->
+<!--                              >&lt;!&ndash;&ndash;&gt;<li-->
+<!--                                    class="tag-default tag-pill tag-outline">-->
+<!--                                    rerum </li-->
+<!--                              ><li class="tag-default tag-pill tag-outline">-->
+<!--                                    maiores </li-->
+<!--                              ><li class="tag-default tag-pill tag-outline">-->
+<!--                                    omnis </li-->
+<!--                              ><li class="tag-default tag-pill tag-outline">-->
+<!--                                    quae-->
+<!--                              </li></ul-->
+<!--                        ></div-->
+<!--                  ></div-->
+<!--            ><hr /><div class="article-actions"-->
+<!--                  ><div-->
+<!--                        ><div class="article-meta"-->
+<!--                              ><a href="/profile/Anah%20Bene%C5%A1ov%C3%A1"-->
+<!--                                    ><img-->
+<!--                                          src="https://api.realworld.io/images/demo-avatar.png" /></a-->
+<!--                              ><div class="info"-->
+<!--                                    ><a-->
+<!--                                          class="author"-->
+<!--                                          href="/profile/Anah%20Bene%C5%A1ov%C3%A1">-->
+<!--                                          Anah Benešová </a-->
+<!--                                    ><span class="date">-->
+<!--                                          December 9, 2022-->
+<!--                                    </span></div-->
+<!--                              ><span hidden=""-->
+<!--                                    ><a-->
+<!--                                          class="btn btn-sm btn-outline-secondary"-->
+<!--                                          href="/editor/If-we-quantify-the-alarm-we-can-get-to-the-FTP-pixel-through-the-online-SSL-interface!-120863"-->
+<!--                                          ><i class="ion-edit"></i> Edit Article </a-->
+<!--                                    ><button-->
+<!--                                          class="btn btn-sm btn-outline-danger"-->
+<!--                                          ><i class="ion-trash-a"></i> Delete-->
+<!--                                          Article-->
+<!--                                    </button></span-->
+<!--                              ><span-->
+<!--                                    ><div-->
+<!--                                          ><button-->
+<!--                                                class="btn btn-sm action-btn btn-secondary"-->
+<!--                                                ><i class="ion-plus-round"></i>-->
+<!--                                                &nbsp; Unfollow Anah Benešová-->
+<!--                                          </button></div-->
+<!--                                    ><div-->
+<!--                                          ><button-->
+<!--                                                class="btn btn-sm btn-outline-primary"-->
+<!--                                                ><i class="ion-heart"></i>-->
+<!--                                                Favorite Article-->
+<!--                                                <span class="counter"-->
+<!--                                                      >(370)</span-->
+<!--                                                ></button-->
+<!--                                          ></div-->
+<!--                                    ></span-->
+<!--                              ></div-->
+<!--                        ></div-->
+<!--                  ></div-->
+<!--            ><div class="row"-->
+<!--                  ><div class="col-xs-12 col-md-8 offset-md-2"-->
+<!--                        ><div-->
+<!--                              ><div><ul class="error-messages"></ul></div-->
+<!--                              ><form-->
+<!--                                    class="card comment-form ng-untouched ng-pristine ng-valid"-->
+<!--                                    novalidate=""-->
+<!--                                    ><fieldset-->
+<!--                                          ><div class="card-block">-->
+<!--                                                <textarea-->
+<!--                                                      class="form-control ng-untouched ng-pristine ng-valid"-->
+<!--                                                      placeholder="Write a comment..."-->
+<!--                                                      rows="3"></textarea></div-->
+<!--                                          ><div class="card-footer"-->
+<!--                                                ><img-->
+<!--                                                      class="comment-author-img"-->
+<!--                                                      src="https://api.realworld.io/images/smiley-cyrus.jpeg" /><button-->
+<!--                                                      class="btn btn-sm btn-primary"-->
+<!--                                                      type="submit">-->
+<!--                                                      Post Comment-->
+<!--                                                </button></div-->
+<!--                                          ></fieldset-->
+<!--                                    ></form-->
+<!--                              ></div-->
+<!--                        ></div-->
+<!--                  ></div-->
+<!--            ></div-->
+<!--      ></div-->
+<!--&gt;-->
