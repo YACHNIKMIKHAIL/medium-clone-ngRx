@@ -1,13 +1,17 @@
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, of, switchMap } from "rxjs";
-import { ArticleService as SharedArticleInterface } from "../../../shared/services/article.service";
+import { ArticleService as SharedArticleService } from "../../../shared/services/article.service";
 import { Injectable } from "@angular/core";
 import {
+      deleteArticleAction,
+      deleteArticleFailureAction,
+      deleteArticleSuccessAction,
       getArticleAction,
       getArticleFailureAction,
       getArticleSuccessAction,
 } from "../actions/get-article.actions";
 import { ArticleInterface } from "../../../shared/types/article.interface";
+import { ArticleService } from "../../services/article.service";
 
 @Injectable()
 export class GetArticleEffect {
@@ -27,8 +31,25 @@ export class GetArticleEffect {
             ),
       );
 
+      deleteArticle$ = createEffect(() =>
+            this.actions$.pipe(
+                  ofType(deleteArticleAction),
+                  switchMap(({ slug }) => {
+                        return this.articleService.deleteArticle(slug).pipe(
+                              map(() => {
+                                    return deleteArticleSuccessAction();
+                              }),
+                              catchError(() => {
+                                    return of(deleteArticleFailureAction());
+                              }),
+                        );
+                  }),
+            ),
+      );
+
       constructor(
             private actions$: Actions,
-            private sharedArticleService: SharedArticleInterface,
+            private sharedArticleService: SharedArticleService,
+            private articleService: ArticleService,
       ) {}
 }
