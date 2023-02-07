@@ -15,6 +15,6 @@ export class ArticleService {
             const fullUrl = `${environment.apiUrl}/articles/${slug}`;
             return this.http
                   .get<GetArticleResponseInterface>(fullUrl)
-                  .pipe(map(response => response.articles));
+                  .pipe(map(response => response.article));
       }
 }
