@@ -9,6 +9,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { ErrorMessageModule } from "../shared/modules/error-message/error-message.module";
 import { LoadingModule } from "../shared/modules/loading/loading.module";
 import { TagListModule } from "../shared/modules/tagList/tagList.module";
+import { DeleteArticleEffect } from "./store/effects/delete-article.effect";
 
 const routes: Routes = [
       {
@@ -21,7 +22,7 @@ const routes: Routes = [
       imports: [
             CommonModule,
             StoreModule.forFeature("article", reducer),
-            EffectsModule.forFeature([GetArticleEffect]),
+            EffectsModule.forFeature([GetArticleEffect, DeleteArticleEffect]),
             RouterModule,
             ErrorMessageModule,
             LoadingModule,
