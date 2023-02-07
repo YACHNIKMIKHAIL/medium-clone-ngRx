@@ -7,12 +7,10 @@ import {
       articleSelector,
       isLoadingSelector,
 } from "../store/selectors";
-import {
-      deleteArticleAction,
-      getArticleAction,
-} from "../store/actions/get-article.actions";
+import { getArticleAction } from "../store/actions/get-article.actions";
 import { ActivatedRoute } from "@angular/router";
 import { currentUserSelector } from "../../auth/store/selectors";
+import { deleteArticleAction } from "../store/actions/delete-article.actions";
 
 @Component({
       selector: "mc-article",
@@ -27,10 +25,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
       public error$ = new Observable<string | null>();
       public slug: string | null = null;
       public isAuthor$ = new Observable<boolean>();
-      constructor(
-            private store: Store,
-            private route: ActivatedRoute,
-      ) {}
+      constructor(private store: Store, private route: ActivatedRoute) {}
       ngOnInit(): void {
             this.initializeValues();
             this.fetchArticle();
@@ -66,7 +61,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
             this.articleSubscription.unsubscribe();
       }
 
-      deleteArticle(slug: string): void {
-            this.store.dispatch(deleteArticleAction({ slug }));
+      deleteArticle(): void {
+            this.store.dispatch(deleteArticleAction({ slug: this.slug }));
       }
 }

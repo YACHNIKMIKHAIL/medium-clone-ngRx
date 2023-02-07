@@ -2,13 +2,15 @@ import { Action, createReducer, on } from "@ngrx/store";
 import { ArticleStateInterface } from "../types/article-state.interface";
 import { routerNavigatedAction } from "@ngrx/router-store";
 import {
-      deleteArticleAction,
-      deleteArticleFailureAction,
-      deleteArticleSuccessAction,
       getArticleAction,
       getArticleFailureAction,
       getArticleSuccessAction,
 } from "./actions/get-article.actions";
+import {
+      deleteArticleAction,
+      deleteArticleFailureAction,
+      deleteArticleSuccessAction,
+} from "./actions/delete-article.actions";
 
 const initialState: ArticleStateInterface = {
       isLoading: true,
@@ -35,7 +37,7 @@ export const articleReducer = createReducer(
       })),
       on(routerNavigatedAction, (): ArticleStateInterface => initialState),
       on(deleteArticleAction, state => ({ ...state, isLoading: true })),
-      on(deleteArticleSuccessAction, (state) => {
+      on(deleteArticleSuccessAction, state => {
             return {
                   ...state,
                   isLoading: false,

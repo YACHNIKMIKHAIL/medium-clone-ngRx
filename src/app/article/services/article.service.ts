@@ -9,7 +9,7 @@ import { Observable } from "rxjs";
 export class ArticleService {
       constructor(private http: HttpClient) {}
 
-      deleteArticle(slug: string): Observable<{}> {
+      deleteArticle(slug: string | null): Observable<{}> {
             console.log("ArticleService");
             return this.http.delete<{}>(
                   `${environment.apiUrl}/articles/${slug}`,
