@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ArticleInputInterface } from "../../shared/types/article-input.interface";
+import { CreateArticleService } from "../services/create-article.service";
 
 @Component({
       selector: "mc-create-article",
