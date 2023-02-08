@@ -9,14 +9,25 @@ import { SaveArticleResponseInterface } from "../../shared/types/save-article-re
 @Injectable({
       providedIn: "root",
 })
-export class CreateArticleService {
+export class EditArticleService {
       constructor(private http: HttpClient) {}
 
-      createArticle(
+      editArticle(
             articleInput: ArticleInputInterface,
       ): Observable<ArticleInterface> {
             return this.http
-                  .post<SaveArticleResponseInterface>(
+                  .put<SaveArticleResponseInterface>(
+                        `${environment.apiUrl}/articles`,
+                        { article: articleInput },
+                  )
+                  .pipe(map(response => response.article));
+      }
+
+      getEditedArticle(
+            articleInput: ArticleInputInterface,
+      ): Observable<ArticleInterface> {
+            return this.http
+                  .put<SaveArticleResponseInterface>(
                         `${environment.apiUrl}/articles`,
                         { article: articleInput },
                   )

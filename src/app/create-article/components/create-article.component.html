@@ -2,4 +2,5 @@
 <mc-article-form
       (articleSubmit)="createArticle($event)"
       [initialValues]="initialValues"
-      [isSubmitting]="false"></mc-article-form>
+      [isSubmitting]="isSubmitting$ | async"
+      [errors]="error$ | async"></mc-article-form>
