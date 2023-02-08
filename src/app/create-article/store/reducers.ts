@@ -1,61 +1,41 @@
 import { Action, createReducer, on } from "@ngrx/store";
-import { ArticleStateInterface } from "../types/article-state.interface";
 import { routerNavigatedAction } from "@ngrx/router-store";
 import {
-      getArticleAction,
-      getArticleFailureAction,
-      getArticleSuccessAction,
-} from "./actions/get-article.actions";
-import {
-      deleteArticleAction,
-      deleteArticleFailureAction,
-      deleteArticleSuccessAction,
-} from "./actions/delete-article.actions";
+      createArticleAction,
+      createArticleFailureAction,
+      createArticleSuccessAction,
+} from "./actions/create-article.actions";
+import { CreateArticleStateInterface } from "../types/create-article-state.interface";
 
-const initialState: ArticleStateInterface = {
-      isLoading: true,
+const initialState: CreateArticleStateInterface = {
+      isSubmitting: false,
       error: null,
-      data: null,
 };
 
-export const articleReducer = createReducer(
+export const saveArticleReducer = createReducer(
       initialState,
-      on(getArticleAction, state => ({ ...state, isLoading: true })),
-      on(getArticleSuccessAction, (state, action) => {
+      on(createArticleAction, state => ({ ...state, isSubmitting: true })),
+      on(createArticleSuccessAction, state => {
             return {
                   ...state,
-                  isLoading: false,
+                  isSubmitting: false,
                   error: null,
-                  data: action.article,
             };
       }),
-      on(getArticleFailureAction, state => ({
+      on(createArticleFailureAction, (state, action) => ({
             ...state,
             isLoading: false,
-            error: "Something with fetch article went wrong !",
-            data: null,
+            error: action.errors,
       })),
-      on(routerNavigatedAction, (): ArticleStateInterface => initialState),
-      on(deleteArticleAction, state => ({ ...state, isLoading: true })),
-      on(deleteArticleSuccessAction, state => {
-            return {
-                  ...state,
-                  isLoading: false,
-                  error: null,
-                  data: null,
-            };
-      }),
-      on(deleteArticleFailureAction, state => ({
-            ...state,
-            isLoading: false,
-            error: "Something with fetch article went wrong !",
-            data: null,
-      })),
+      on(
+            routerNavigatedAction,
+            (): CreateArticleStateInterface => initialState,
+      ),
 );
 
 export function reducer(
-      state: ArticleStateInterface,
+      state: CreateArticleStateInterface,
       action: Action,
-): ArticleStateInterface {
-      return articleReducer(state, action);
+): CreateArticleStateInterface {
+      return saveArticleReducer(state, action);
 }

@@ -32,7 +32,7 @@ export class DeleteArticleEffect {
                   this.actions$.pipe(
                         ofType(deleteArticleSuccessAction),
                         tap(() => {
-                              this.router.navigateByUrl("/");
+                              this.router.navigate(["/"]);
                         }),
                   ),
             { dispatch: false },
