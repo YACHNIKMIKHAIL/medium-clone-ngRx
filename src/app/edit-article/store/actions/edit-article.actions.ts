@@ -6,7 +6,7 @@ import { ArticleInterface } from "../../../shared/types/article.interface";
 
 export const editArticleAction = createAction(
       ActionTypes.EDIT_ARTICLE,
-      props<{ articleInput: ArticleInputInterface }>(),
+      props<{ articleInput: ArticleInputInterface; slug: string }>(),
 );
 
 export const editArticleSuccessAction = createAction(

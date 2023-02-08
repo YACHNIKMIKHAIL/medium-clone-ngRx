@@ -14,10 +14,11 @@ export class EditArticleService {
 
       editArticle(
             articleInput: ArticleInputInterface,
+            slug: string,
       ): Observable<ArticleInterface> {
             return this.http
                   .put<SaveArticleResponseInterface>(
-                        `${environment.apiUrl}/articles`,
+                        `${environment.apiUrl}/articles/${slug}`,
                         { article: articleInput },
                   )
                   .pipe(map(response => response.article));
