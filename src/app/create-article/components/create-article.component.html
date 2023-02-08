@@ -1,2 +1,5 @@
 <h1>create-article works!</h1>
-<mc-article-form></mc-article-form>
+<mc-article-form
+      (articleSubmit)="createArticle($event)"
+      [initialValues]="initialValues"
+      [isSubmitting]="false"></mc-article-form>

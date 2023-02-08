@@ -1,4 +1,12 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import {
+      FormBuilder,
+      FormControl,
+      FormGroup,
+      Validators,
+} from "@angular/forms";
+import { ArticleInputInterface } from "../../../types/article-input.interface";
+import { BackendErrorsInterface } from "../../../types/backendErrors.interface";
 
 @Component({
       selector: "mc-article-form",
@@ -6,7 +14,54 @@ import { Component, OnInit } from "@angular/core";
       styleUrls: ["./article-form.component.scss"],
 })
 export class ArticleFormComponent implements OnInit {
-      constructor() {}
+      @Input("initialValues") initialValuesProps!: ArticleInputInterface;
+      @Input("isSubmitting") isSubmittingProps!: boolean;
+      @Input("errors") errorsProps!: BackendErrorsInterface | null;
+      @Output("articleSubmit") articleSubmitEvent =
+            new EventEmitter<ArticleInputInterface>();
 
-      ngOnInit(): void {}
+      articleForm!: FormGroup<{
+            description: FormControl<string | null>;
+            title: FormControl<string | null>;
+            body: FormControl<string | null>;
+            tags: FormControl<string | null>;
+      }>;
+      constructor(private fb: FormBuilder) {}
+
+      ngOnInit(): void {
+            this.initializeForm();
+      }
+
+      initializeForm(): void {
+            this.articleForm = this.fb.group({
+                  title: new FormControl(this.initialValuesProps.title, [
+                        Validators.minLength(4),
+                        Validators.required,
+                  ]),
+                  description: new FormControl(
+                        this.initialValuesProps.description,
+                        [Validators.minLength(4), Validators.required],
+                  ),
+                  body: new FormControl(this.initialValuesProps.body, [
+                        Validators.minLength(4),
+                        Validators.required,
+                  ]),
+                  tags: new FormControl(this.initialValuesProps.tags.join(" ")),
+            });
+      }
+
+      onSubmit() {
+            this.articleSubmitEvent.emit(
+                  {
+                        title: this.articleForm.value.title as string,
+                        description: this.articleForm.value
+                              .description as string,
+                        body: this.articleForm.value.body as string,
+                        tags: this.articleForm.value.tags?.split(
+                              " ",
+                        ) as string[],
+                  },
+                  // this.articleForm.value,
+            );
+      }
 }
