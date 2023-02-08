@@ -14,9 +14,9 @@ export class EditArticleEffect {
       editArticle$ = createEffect(() =>
             this.actions$.pipe(
                   ofType(editArticleAction),
-                  switchMap(({ articleInput }) => {
+                  switchMap(({ articleInput, slug }) => {
                         return this.editArticleService
-                              .editArticle(articleInput)
+                              .editArticle(articleInput, slug)
                               .pipe(
                                     map(article => {
                                           return editArticleSuccessAction({

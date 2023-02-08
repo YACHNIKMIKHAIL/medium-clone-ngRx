@@ -10,6 +10,7 @@ import {
 import { select, Store } from "@ngrx/store";
 import { articleSelector } from "../../article/store/selectors";
 import { getArticleAction } from "../../article/store/actions/get-article.actions";
+import { editArticleAction } from "../store/actions/edit-article.actions";
 
 @Component({
       selector: "mc-edit-article",
@@ -21,10 +22,8 @@ export class EditArticleComponent implements OnInit, OnDestroy {
       public articleSubscription = new Subscription();
       public isSubmitting$ = new Observable<boolean>();
       public error$ = new Observable<BackendErrorsInterface | null>();
-      constructor(
-            private route: ActivatedRoute,
-            private store: Store,
-      ) {}
+      public slug = "";
+      constructor(private route: ActivatedRoute, private store: Store) {}
 
       ngOnInit(): void {
             this.initValues();
@@ -32,9 +31,10 @@ export class EditArticleComponent implements OnInit, OnDestroy {
       }
 
       getArticle(): void {
+            this.slug = this.route.snapshot.paramMap.get("slug") || "";
             this.store.dispatch(
                   getArticleAction({
-                        slug: this.route.snapshot.paramMap.get("slug") || "",
+                        slug: this.slug,
                   }),
             );
             this.articleSubscription = this.store
@@ -60,7 +60,9 @@ export class EditArticleComponent implements OnInit, OnDestroy {
             this.articleSubscription.unsubscribe();
       }
 
-      saveEditArticle($event: ArticleInputInterface) {
-        console.log($event)
+      saveEditArticle(articleInput: ArticleInputInterface) {
+            this.store.dispatch(
+                  editArticleAction({ articleInput, slug: this.slug }),
+            );
       }
 }
