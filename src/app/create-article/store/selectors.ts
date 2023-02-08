@@ -1,22 +1,17 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { ArticleStateInterface } from "../types/article-state.interface";
+import { CreateArticleStateInterface } from "../types/create-article-state.interface";
 
-export const articleFeatureSelector =
-      createFeatureSelector<ArticleStateInterface>("article");
+export const createArticleFeatureSelector =
+      createFeatureSelector<CreateArticleStateInterface>("createArticle");
 
-export const articleSelector = createSelector(
-      articleFeatureSelector,
-      (feedState: ArticleStateInterface) => {
-            return feedState.data;
-      },
-);
-
-export const isLoadingSelector = createSelector(
-      articleFeatureSelector,
-      (articleState: ArticleStateInterface) => articleState.isLoading,
+export const isSubmittingSelector = createSelector(
+      createArticleFeatureSelector,
+      (createArticleState: CreateArticleStateInterface) =>
+            createArticleState.isSubmitting,
 );
 
 export const articleErrorSelector = createSelector(
-      articleFeatureSelector,
-      (articleState: ArticleStateInterface) => articleState.error,
+      createArticleFeatureSelector,
+      (createArticleState: CreateArticleStateInterface) =>
+            createArticleState.error,
 );

@@ -15,7 +15,7 @@ import { BackendErrorsInterface } from "../../../types/backendErrors.interface";
 })
 export class ArticleFormComponent implements OnInit {
       @Input("initialValues") initialValuesProps!: ArticleInputInterface;
-      @Input("isSubmitting") isSubmittingProps!: boolean;
+      @Input("isSubmitting") isSubmittingProps!: boolean | null;
       @Input("errors") errorsProps!: BackendErrorsInterface | null;
       @Output("articleSubmit") articleSubmitEvent =
             new EventEmitter<ArticleInputInterface>();
@@ -24,7 +24,7 @@ export class ArticleFormComponent implements OnInit {
             description: FormControl<string | null>;
             title: FormControl<string | null>;
             body: FormControl<string | null>;
-            tags: FormControl<string | null>;
+            tagList: FormControl<string | null>;
       }>;
       constructor(private fb: FormBuilder) {}
 
@@ -46,22 +46,20 @@ export class ArticleFormComponent implements OnInit {
                         Validators.minLength(4),
                         Validators.required,
                   ]),
-                  tags: new FormControl(this.initialValuesProps.tags.join(" ")),
+                  tagList: new FormControl(
+                        this.initialValuesProps.tagList.join(" "),
+                  ),
             });
       }
 
       onSubmit() {
-            this.articleSubmitEvent.emit(
-                  {
-                        title: this.articleForm.value.title as string,
-                        description: this.articleForm.value
-                              .description as string,
-                        body: this.articleForm.value.body as string,
-                        tags: this.articleForm.value.tags?.split(
-                              " ",
-                        ) as string[],
-                  },
-                  // this.articleForm.value,
-            );
+            this.articleSubmitEvent.emit({
+                  title: this.articleForm.value.title as string,
+                  description: this.articleForm.value.description as string,
+                  body: this.articleForm.value.body as string,
+                  tagList: this.articleForm.value.tagList
+                        ?.trim()
+                        .split(" ") as string[],
+            });
       }
 }

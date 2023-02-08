@@ -4,6 +4,7 @@ import { ArticleFormComponent } from "./components/article-form.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { ErrorMessageModule } from "../error-message/error-message.module";
 import { BackendErrorMessagesModule } from "../backend-error-messages/backend-error-messages.module";
+import { LoadingModule } from "../loading/loading.module";
 
 @NgModule({
       declarations: [ArticleFormComponent],
@@ -12,6 +13,7 @@ import { BackendErrorMessagesModule } from "../backend-error-messages/backend-er
             ReactiveFormsModule,
             ErrorMessageModule,
             BackendErrorMessagesModule,
+            LoadingModule,
       ],
       exports: [ArticleFormComponent],
 })

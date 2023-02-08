@@ -1,2 +1,11 @@
 <h1>edit-article works!</h1>
-<mc-article-form></mc-article-form>
+<ng-container *ngIf="!!editableArticle; else loading">
+      <mc-article-form
+            (articleSubmit)="saveEditArticle($event)"
+            [initialValues]="editableArticle"
+            [isSubmitting]="isSubmitting$ | async"
+            [errors]="error$ | async"></mc-article-form>
+</ng-container>
+<ng-template #loading>
+      <mc-loading></mc-loading>
+</ng-template>
