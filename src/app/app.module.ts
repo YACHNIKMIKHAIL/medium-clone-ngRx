@@ -21,9 +21,17 @@ import { TagListModule } from "./shared/modules/tagList/tagList.module";
 import { YourFeedModule } from "./your-feed/your-feed.module";
 import { PopularTagFeedModule } from "./popular-tag-feed/popular-tag-feed.module";
 import { ArticleModule } from "./article/article.module";
+import { CreateArticleComponent } from "./create-article/components/create-article.component";
+import { EditArticleComponent } from "./edit-article/components/edit-article.component";
+import { CreateArticleModule } from "./create-article/create-article.module";
+import { EditArticleModule } from "./edit-article/edit-article.module";
 
 @NgModule({
-      declarations: [AppComponent],
+      declarations: [
+            AppComponent,
+            CreateArticleComponent,
+            EditArticleComponent,
+      ],
       imports: [
             BrowserModule,
             AppRoutingModule,
@@ -47,6 +55,8 @@ import { ArticleModule } from "./article/article.module";
             YourFeedModule,
             PopularTagFeedModule,
             ArticleModule,
+            CreateArticleModule,
+            EditArticleModule,
       ],
       providers: [
             {
