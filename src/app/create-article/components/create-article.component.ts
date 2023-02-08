@@ -1,6 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { ArticleInputInterface } from "../../shared/types/article-input.interface";
-import { CreateArticleService } from "../services/create-article.service";
+import { select, Store } from "@ngrx/store";
+import { createArticleAction } from "../store/actions/create-article.actions";
+import { Observable } from "rxjs";
+import { articleErrorSelector, isSubmittingSelector } from "../store/selectors";
+import { BackendErrorsInterface } from "../../shared/types/backendErrors.interface";
 
 @Component({
       selector: "mc-create-article",
@@ -12,13 +16,18 @@ export class CreateArticleComponent implements OnInit {
             title: "",
             description: "",
             body: "",
-            tags: [""],
+            tagList: [],
       };
-      constructor() {}
+      public isSubmitting$!: Observable<boolean>;
+      public error$ = new Observable<BackendErrorsInterface | null>();
+      constructor(private store: Store) {}
 
-      ngOnInit(): void {}
+      ngOnInit(): void {
+            this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector));
+            this.error$ = this.store.pipe(select(articleErrorSelector));
+      }
 
-      createArticle($event: ArticleInputInterface) {
-            console.log($event);
+      createArticle(articleInput: ArticleInputInterface) {
+            this.store.dispatch(createArticleAction({ articleInput }));
       }
 }

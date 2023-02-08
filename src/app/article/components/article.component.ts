@@ -20,7 +20,6 @@ import { deleteArticleAction } from "../store/actions/delete-article.actions";
 export class ArticleComponent implements OnInit, OnDestroy {
       public article: ArticleInterface | null = null;
       public articleSubscription = new Subscription();
-      // public isAuthorSubscription = new Subscription();
       public isLoading$ = new Observable<boolean>();
       public error$ = new Observable<string | null>();
       public slug: string | null = null;
