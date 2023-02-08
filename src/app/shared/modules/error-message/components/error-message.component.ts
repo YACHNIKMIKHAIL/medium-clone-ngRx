@@ -6,5 +6,5 @@ import { Component, Input } from "@angular/core";
       styles: [".error{ color: red;font-weight: bold;}"],
 })
 export class ErrorMessageComponent {
-      @Input("message") messageProps: string | null = "Some error occurred!";
+      @Input("message") messageProps: string | null = null;
 }
