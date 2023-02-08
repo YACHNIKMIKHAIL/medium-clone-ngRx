@@ -25,6 +25,7 @@ import { CreateArticleComponent } from "./create-article/components/create-artic
 import { EditArticleComponent } from "./edit-article/components/edit-article.component";
 import { CreateArticleModule } from "./create-article/create-article.module";
 import { EditArticleModule } from "./edit-article/edit-article.module";
+import { ArticleFormModule } from "./shared/modules/article-form/article-form.module";
 
 @NgModule({
       declarations: [
@@ -57,6 +58,7 @@ import { EditArticleModule } from "./edit-article/edit-article.module";
             ArticleModule,
             CreateArticleModule,
             EditArticleModule,
+            ArticleFormModule,
       ],
       providers: [
             {
