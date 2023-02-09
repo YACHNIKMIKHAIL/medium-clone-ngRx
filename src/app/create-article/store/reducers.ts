@@ -22,11 +22,9 @@ export const saveArticleReducer = createReducer(
                   error: null,
             };
       }),
-      on(createArticleFailureAction, (state, action) => ({
-            ...state,
-            isLoading: false,
-            error: action.errors,
-      })),
+      on(createArticleFailureAction, (state, action) => {
+            return { ...state, isSubmitting: false, error: action.errors };
+      }),
       on(
             routerNavigatedAction,
             (): CreateArticleStateInterface => initialState,
