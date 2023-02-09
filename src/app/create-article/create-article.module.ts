@@ -6,6 +6,7 @@ import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import { CreateArticleEffect } from "./store/effects/create-article.effect";
 import { saveArticleReducer } from "./store/reducers";
+import { ArticleFormModule } from "../shared/modules/article-form/article-form.module";
 
 const routes: Routes = [
       {
@@ -15,12 +16,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-      declarations: [],
+      declarations: [CreateArticleComponent],
       imports: [
             CommonModule,
             RouterModule.forChild(routes),
             StoreModule.forFeature("createArticle", saveArticleReducer),
             EffectsModule.forFeature([CreateArticleEffect]),
+            ArticleFormModule,
       ],
 })
 export class CreateArticleModule {}

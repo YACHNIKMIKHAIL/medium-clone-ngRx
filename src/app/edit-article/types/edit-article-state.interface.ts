@@ -5,4 +5,5 @@ export interface EditArticleStateInterface {
       isSubmitting: boolean;
       error: BackendErrorsInterface | null;
       data: ArticleInputInterface | null;
+      isLoading: boolean;
 }

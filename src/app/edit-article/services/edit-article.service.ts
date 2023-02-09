@@ -12,24 +12,13 @@ import { SaveArticleResponseInterface } from "../../shared/types/save-article-re
 export class EditArticleService {
       constructor(private http: HttpClient) {}
 
-      editArticle(
+      updateArticle(
             articleInput: ArticleInputInterface,
             slug: string,
       ): Observable<ArticleInterface> {
             return this.http
                   .put<SaveArticleResponseInterface>(
                         `${environment.apiUrl}/articles/${slug}`,
-                        { article: articleInput },
-                  )
-                  .pipe(map(response => response.article));
-      }
-
-      getEditedArticle(
-            articleInput: ArticleInputInterface,
-      ): Observable<ArticleInterface> {
-            return this.http
-                  .put<SaveArticleResponseInterface>(
-                        `${environment.apiUrl}/articles`,
                         { article: articleInput },
                   )
                   .pipe(map(response => response.article));
