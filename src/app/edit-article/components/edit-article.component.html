@@ -1,7 +1,8 @@
-<ng-container *ngIf="!!editableArticle; else loading">
+<ng-container *ngIf="!(isLoading$ | async); else loading">
       <mc-article-form
+            *ngIf="editableArticle | async"
             (articleSubmit)="saveEditArticle($event)"
-            [initialValues]="editableArticle"
+            [initialValues]="editableArticle | async"
             [isSubmitting]="isSubmitting$ | async"
             [errors]="error$ | async"></mc-article-form>
 </ng-container>

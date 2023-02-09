@@ -3,24 +3,29 @@ import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
 import { EditArticleComponent } from "./components/edit-article.component";
 import { StoreModule } from "@ngrx/store";
-import { reducer } from "../article/store/reducers";
 import { EffectsModule } from "@ngrx/effects";
 import { EditArticleEffect } from "./store/effects/edit-article.effect";
+import { GetArticleEffect } from "./store/effects/get-article.effect";
+import { editArticleReducer } from "./store/reducers";
+import { LoadingModule } from "../shared/modules/loading/loading.module";
+import { ArticleFormModule } from "../shared/modules/article-form/article-form.module";
 
 const routes: Routes = [
       {
-            path: "articles/edit/:slug",
+            path: "articles/:slug/edit",
             component: EditArticleComponent,
       },
 ];
 
 @NgModule({
-      declarations: [],
+      declarations: [EditArticleComponent],
       imports: [
             CommonModule,
             RouterModule.forChild(routes),
-            StoreModule.forFeature("editArticle", reducer),
-            EffectsModule.forFeature([EditArticleEffect]),
+            StoreModule.forFeature("editArticle", editArticleReducer),
+            EffectsModule.forFeature([EditArticleEffect, GetArticleEffect]),
+            LoadingModule,
+            ArticleFormModule,
       ],
 })
 export class EditArticleModule {}
