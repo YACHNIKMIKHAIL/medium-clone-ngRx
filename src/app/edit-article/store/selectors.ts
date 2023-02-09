@@ -12,12 +12,16 @@ export const getEditableArticle = createSelector(
 
 export const isSubmittingSelector = createSelector(
       editArticleFeatureSelector,
-      (createArticleState: EditArticleStateInterface) =>
-            createArticleState.isSubmitting,
+      (editArticleState: EditArticleStateInterface) =>
+            editArticleState.isSubmitting,
 );
 
-export const articleErrorSelector = createSelector(
+export const isLoadingSelector = createSelector(
       editArticleFeatureSelector,
-      (createArticleState: EditArticleStateInterface) =>
-            createArticleState.error,
+      (editArticleState: EditArticleStateInterface) =>
+            editArticleState.isLoading,
+);
+export const updateArticleErrorSelector = createSelector(
+      editArticleFeatureSelector,
+      (editArticleState: EditArticleStateInterface) => editArticleState.error,
 );

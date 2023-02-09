@@ -2,30 +2,30 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, of, switchMap, tap } from "rxjs";
 import { Injectable } from "@angular/core";
 import {
-      editArticleAction,
-      editArticleFailureAction,
-      editArticleSuccessAction,
-} from "../actions/edit-article.actions";
+      updateArticleAction,
+      updateArticleFailureAction,
+      updateArticleSuccessAction,
+} from "../actions/update-article.actions";
 import { Router } from "@angular/router";
 import { EditArticleService } from "../../services/edit-article.service";
 
 @Injectable()
 export class EditArticleEffect {
-      editArticle$ = createEffect(() =>
+      updateArticle$ = createEffect(() =>
             this.actions$.pipe(
-                  ofType(editArticleAction),
+                  ofType(updateArticleAction),
                   switchMap(({ articleInput, slug }) => {
                         return this.editArticleService
-                              .editArticle(articleInput, slug)
+                              .updateArticle(articleInput, slug)
                               .pipe(
                                     map(article => {
-                                          return editArticleSuccessAction({
+                                          return updateArticleSuccessAction({
                                                 article,
                                           });
                                     }),
                                     catchError(errorResponse => {
                                           return of(
-                                                editArticleFailureAction({
+                                                updateArticleFailureAction({
                                                       errors: errorResponse
                                                             .error.errors,
                                                 }),
@@ -36,10 +36,10 @@ export class EditArticleEffect {
             ),
       );
 
-      redirectAfterEditArticle$ = createEffect(
+      redirectAfterUpdateArticle$ = createEffect(
             () =>
                   this.actions$.pipe(
-                        ofType(editArticleSuccessAction),
+                        ofType(updateArticleSuccessAction),
                         tap(({ article }) => {
                               this.router.navigate(["/articles", article.slug]);
                         }),

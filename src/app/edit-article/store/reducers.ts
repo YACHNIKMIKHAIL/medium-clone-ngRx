@@ -1,13 +1,19 @@
 import { Action, createReducer, on } from "@ngrx/store";
 import { routerNavigatedAction } from "@ngrx/router-store";
 import {
-      editArticleAction,
-      editArticleFailureAction,
-      editArticleSuccessAction,
-} from "./actions/edit-article.actions";
+      updateArticleAction,
+      updateArticleFailureAction,
+      updateArticleSuccessAction,
+} from "./actions/update-article.actions";
 import { EditArticleStateInterface } from "../types/edit-article-state.interface";
+import {
+      getEditableArticleAction,
+      getEditableArticleFailureAction,
+      getEditableArticleSuccessAction,
+} from "./actions/get-article.actions";
 
 const initialState: EditArticleStateInterface = {
+      isLoading: false,
       isSubmitting: false,
       error: null,
       data: null,
@@ -15,23 +21,45 @@ const initialState: EditArticleStateInterface = {
 
 export const editArticleReducer = createReducer(
       initialState,
-      on(editArticleAction, (state, action) => ({
+      on(updateArticleAction, state => ({
             ...state,
-            data: action.articleInput,
+            isSubmitting: true,
       })),
-      on(editArticleSuccessAction, state => {
+      on(updateArticleSuccessAction, state => {
             return {
                   ...state,
                   isSubmitting: false,
                   error: null,
             };
       }),
-      on(editArticleFailureAction, (state, action) => ({
+      on(updateArticleFailureAction, (state, action) => ({
             ...state,
-            isLoading: false,
+            isSubmitting: false,
             error: action.errors,
       })),
       on(routerNavigatedAction, (): EditArticleStateInterface => initialState),
+      on(getEditableArticleAction, state => ({
+            ...state,
+            isLoading: true,
+      })),
+      on(getEditableArticleSuccessAction, (state, action) => {
+            return {
+                  ...state,
+                  isLoading: false,
+                  data: action.article,
+                  error: null,
+            };
+      }),
+      on(getEditableArticleFailureAction, state => {
+            debugger;
+            return {
+                  ...state,
+                  isLoading: false,
+                  error: {
+                        error: ["шо та упала на фече"],
+                  },
+            };
+      }),
 );
 
 export function reducer(

@@ -4,17 +4,17 @@ import { ActionTypes } from "../action-types";
 import { BackendErrorsInterface } from "../../../shared/types/backendErrors.interface";
 import { ArticleInterface } from "../../../shared/types/article.interface";
 
-export const editArticleAction = createAction(
-      ActionTypes.EDIT_ARTICLE,
+export const updateArticleAction = createAction(
+      ActionTypes.UPDATE_ARTICLE,
       props<{ articleInput: ArticleInputInterface; slug: string }>(),
 );
 
-export const editArticleSuccessAction = createAction(
-      ActionTypes.EDIT_ARTICLE_SUCCESS,
+export const updateArticleSuccessAction = createAction(
+      ActionTypes.UPDATE_ARTICLE_SUCCESS,
       props<{ article: ArticleInterface }>(),
 );
 
-export const editArticleFailureAction = createAction(
-      ActionTypes.EDIT_ARTICLE_FAILURE,
+export const updateArticleFailureAction = createAction(
+      ActionTypes.UPDATE_ARTICLE_FAILURE,
       props<{ errors: BackendErrorsInterface }>(),
 );
