@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Observable } from "rxjs";
-import { BackendErrorsInterface } from "../../../shared/types/backendErrors.interface";
+import { BackendErrorsInterface } from "../../../shared/types/backend-errors.interface";
 import { select, Store } from "@ngrx/store";
 import {
       isSubmittingSelector,

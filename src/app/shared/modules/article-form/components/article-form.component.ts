@@ -6,7 +6,7 @@ import {
       Validators,
 } from "@angular/forms";
 import { ArticleInputInterface } from "../../../types/article-input.interface";
-import { BackendErrorsInterface } from "../../../types/backendErrors.interface";
+import { BackendErrorsInterface } from "../../../types/backend-errors.interface";
 
 @Component({
       selector: "mc-article-form",
@@ -57,9 +57,11 @@ export class ArticleFormComponent implements OnInit {
                   title: this.articleForm.value.title as string,
                   description: this.articleForm.value.description as string,
                   body: this.articleForm.value.body as string,
-                  tagList: this.articleForm.value.tagList
-                        ?.trim()
-                        .split(" ") as string[],
+                  tagList: this.articleForm.value.tagList?.includes("")
+                        ? []
+                        : (this.articleForm.value.tagList
+                                ?.trim()
+                                .split(" ") as string[]),
             });
       }
 }

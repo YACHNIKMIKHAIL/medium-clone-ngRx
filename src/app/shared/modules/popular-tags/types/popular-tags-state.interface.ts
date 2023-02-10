@@ -1,4 +1,4 @@
-import { PopularTagType } from "../../../types/popularTagType";
+import { PopularTagType } from "../../../types/popular-tag-type";
 
 export interface PopularTagsStateInterface {
       data: PopularTagType[] | null;

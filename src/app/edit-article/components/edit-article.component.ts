@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ArticleInputInterface } from "../../shared/types/article-input.interface";
 import { filter, map, Observable } from "rxjs";
-import { BackendErrorsInterface } from "../../shared/types/backendErrors.interface";
+import { BackendErrorsInterface } from "../../shared/types/backend-errors.interface";
 import { ActivatedRoute } from "@angular/router";
 import { select, Store } from "@ngrx/store";
 import { getEditableArticleAction } from "../store/actions/get-article.actions";
