@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { RegisterRequestInterface } from "../types/registerRequest.interface";
 import { CurrentUserInterface } from "../../shared/types/current-user.interface";
-import {map, Observable, tap} from "rxjs";
+import { map, Observable, tap } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../environments/environment.prod";
 import { AuthResponseInterface } from "../types/authResponse.interface";
@@ -41,11 +41,9 @@ export class AuthService {
       updateCurrentUser(
             currentUser: CurrentUserInputInterface,
       ): Observable<CurrentUserInterface> {
-        return this.http
-          .put(this.url + "/user", currentUser)
-          .pipe(
-            tap(m=>console.log('tap',m)),
-                    map(resp => resp as CurrentUserInterface)
-                  );
+            return this.http.put(this.url + "/user", currentUser).pipe(
+                  tap(m => console.log("tap", m)),
+                  map(resp => resp as CurrentUserInterface),
+            );
       }
 }
