@@ -6,8 +6,8 @@ import {
       isLoggedInSelector,
 } from "../../../../auth/store/selectors";
 import { Observable } from "rxjs";
-import { CurrentUserInterface } from "../../../types/currentUser.interface";
-import { getCurrentUserAction } from "../../../../auth/store/actions/getCurrentUser.actions";
+import { CurrentUserInterface } from "../../../types/current-user.interface";
+import { getCurrentUserAction } from "../../../../auth/store/actions/get-current-user.actions";
 
 @Component({
       selector: "mc-top-bar",

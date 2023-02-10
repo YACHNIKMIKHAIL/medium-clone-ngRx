@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
-import { PopularTagType } from "../../../types/popularTagType";
+import { PopularTagType } from "../../../types/popular-tag-type";
 import { select, Store } from "@ngrx/store";
 import {
       popularTagsErrorSelector,

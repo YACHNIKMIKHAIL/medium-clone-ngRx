@@ -24,6 +24,7 @@ import { ArticleModule } from "./article/article.module";
 import { CreateArticleModule } from "./create-article/create-article.module";
 import { EditArticleModule } from "./edit-article/edit-article.module";
 import { ArticleFormModule } from "./shared/modules/article-form/article-form.module";
+import { SettingsModule } from "./settings/settings.module";
 
 @NgModule({
       declarations: [AppComponent],
@@ -53,6 +54,7 @@ import { ArticleFormModule } from "./shared/modules/article-form/article-form.mo
             ArticleModule,
             EditArticleModule,
             ArticleFormModule,
+            SettingsModule,
       ],
       providers: [
             {

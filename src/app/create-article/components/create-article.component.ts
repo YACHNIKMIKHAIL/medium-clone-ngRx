@@ -4,7 +4,7 @@ import { select, Store } from "@ngrx/store";
 import { createArticleAction } from "../store/actions/create-article.actions";
 import { Observable } from "rxjs";
 import { articleErrorSelector, isSubmittingSelector } from "../store/selectors";
-import { BackendErrorsInterface } from "../../shared/types/backendErrors.interface";
+import { BackendErrorsInterface } from "../../shared/types/backend-errors.interface";
 
 @Component({
       selector: "mc-create-article",
