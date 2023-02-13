@@ -6,6 +6,7 @@ import { StoreModule } from "@ngrx/store";
 import { settingsReducer } from "./store/redusers";
 import { ReactiveFormsModule } from "@angular/forms";
 import { LoadingModule } from "../shared/modules/loading/loading.module";
+import { BackendErrorMessagesModule } from "../shared/modules/backend-error-messages/backend-error-messages.module";
 
 const routes: Routes = [
       {
@@ -21,6 +22,7 @@ const routes: Routes = [
             StoreModule.forFeature("settings", settingsReducer),
             ReactiveFormsModule,
             LoadingModule,
+            BackendErrorMessagesModule,
       ],
 })
 export class SettingsModule {}

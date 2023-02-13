@@ -3,17 +3,15 @@
             ><div class="row"
                   ><div class="col-md-6 offset-md-3 col-xs-12"
                         ><h1 class="text-xs-center">Your Settings</h1>
-                        <!--  <app-list-errors-->
-                        <!--                              ><ul class="error-messages"-->
-                        <!--                                    >-->
-
-                        <!--  </ul-->
-                        <!--                              ></app-list-errors-->
-                        <!--                        >-->
+                        <mc-backend-error-message
+                              *ngIf="backendErrors$ | async"
+                              [backendErrors]="
+                                    backendErrors$ | async
+                              "></mc-backend-error-message>
                         <ng-container *ngIf="!!currentUser; else loading">
                               <form
                                     [formGroup]="currentUserForm"
-                                    (ngSubmit)="updateUser()"
+                                    (ngSubmit)="submit()"
                                     class="ng-untouched ng-pristine ng-valid"
                                     ><fieldset
                                           ><fieldset class="form-group"
@@ -23,7 +21,7 @@
                                                             'image'
                                                       "
                                                       placeholder="URL of profile picture"
-                                                      type="text" /></fieldset
+                                                      type="text" /> </fieldset
                                           ><fieldset class="form-group"
                                                 ><input
                                                       class="form-control form-control-lg ng-untouched ng-pristine ng-valid"
@@ -58,7 +56,8 @@
                                           /></fieldset>
                                           <button
                                                 [disabled]="
-                                                      !currentUserForm.valid
+                                                      !currentUserForm.valid ||
+                                                      (isSubmitting$ | async)
                                                 "
                                                 class="btn btn-lg btn-primary pull-xs-right"
                                                 type="submit">
@@ -70,7 +69,9 @@
                         <ng-template #loading>
                               <mc-loading></mc-loading>
                         </ng-template>
-                        <hr /><button class="btn btn-outline-danger">
+                        <hr /><button
+                              class="btn btn-outline-danger"
+                              (click)="logout()">
                               Or click here to logout.
                         </button></div
                   ></div
