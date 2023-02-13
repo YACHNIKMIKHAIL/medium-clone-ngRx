@@ -46,4 +46,10 @@ export class AuthService {
                   map(resp => resp as CurrentUserInterface),
             );
       }
+
+      logoutCurrentUser(): Observable<CurrentUserInterface> {
+            return this.http
+                  .delete<AuthResponseInterface>(this.url + "/user")
+                  .pipe(this.getUser);
+      }
 }
