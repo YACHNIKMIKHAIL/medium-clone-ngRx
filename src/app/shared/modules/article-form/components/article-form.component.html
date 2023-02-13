@@ -1,12 +1,12 @@
 <div class="container page">
       <div class="row">
             <div class="col-md-10 offset-md-1 col-xs-12">
-                  <ng-template [ngIf]="errorsProps">
+                  <ng-container *ngIf="errorsProps">
                         <mc-backend-error-message
                               [backendErrors]="
                                     errorsProps
                               "></mc-backend-error-message>
-                  </ng-template>
+                  </ng-container>
                   <ng-container *ngIf="!isSubmittingProps; else submitting">
                         <form
                               (ngSubmit)="onSubmit()"
