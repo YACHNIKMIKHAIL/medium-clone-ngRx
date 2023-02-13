@@ -7,7 +7,7 @@ import {
 } from "../../../../auth/store/selectors";
 import { Observable } from "rxjs";
 import { CurrentUserInterface } from "../../../types/current-user.interface";
-import { logoutAction } from "../../../../auth/store/actions/logout-current-user.actions";
+import { logoutAction } from "../../../../auth/store/actions/sync.actions";
 
 @Component({
       selector: "mc-top-bar",
