@@ -10,48 +10,67 @@
                         <!--  </ul-->
                         <!--                              ></app-list-errors-->
                         <!--                        >-->
-                        <form
-                              novalidate=""
-                              class="ng-untouched ng-pristine ng-valid"
-                              ><fieldset
-                                    ><fieldset class="form-group"
-                                          ><input
-                                                class="form-control ng-untouched ng-pristine ng-valid"
-                                                formcontrolname="image"
-                                                placeholder="URL of profile picture"
-                                                type="text" /></fieldset
-                                    ><fieldset class="form-group"
-                                          ><input
-                                                class="form-control form-control-lg ng-untouched ng-pristine ng-valid"
-                                                formcontrolname="username"
-                                                placeholder="Username"
-                                                type="text" /></fieldset
-                                    ><fieldset class="form-group">
-                                          <textarea
-                                                class="form-control form-control-lg ng-untouched ng-pristine ng-valid"
-                                                formcontrolname="bio"
-                                                placeholder="Short bio about you"
-                                                rows="8">
-                                          </textarea></fieldset
-                                    ><fieldset class="form-group"
-                                          ><input
-                                                class="form-control form-control-lg ng-untouched ng-pristine ng-valid"
-                                                formcontrolname="email"
-                                                placeholder="Email"
-                                                type="email" /></fieldset
-                                    ><fieldset class="form-group"
-                                          ><input
-                                                class="form-control form-control-lg ng-untouched ng-pristine ng-valid"
-                                                formcontrolname="password"
-                                                placeholder="New Password"
-                                                type="password" /></fieldset
-                                    ><button
-                                          class="btn btn-lg btn-primary pull-xs-right"
-                                          type="submit">
-                                          Update Settings
-                                    </button></fieldset
-                              ></form
-                        ><hr /><button class="btn btn-outline-danger">
+                        <ng-container *ngIf="!!currentUser; else loading">
+                              <form
+                                    [formGroup]="currentUserForm"
+                                    (ngSubmit)="updateUser()"
+                                    class="ng-untouched ng-pristine ng-valid"
+                                    ><fieldset
+                                          ><fieldset class="form-group"
+                                                ><input
+                                                      class="form-control ng-untouched ng-pristine ng-valid"
+                                                      [formControlName]="
+                                                            'image'
+                                                      "
+                                                      placeholder="URL of profile picture"
+                                                      type="text" /></fieldset
+                                          ><fieldset class="form-group"
+                                                ><input
+                                                      class="form-control form-control-lg ng-untouched ng-pristine ng-valid"
+                                                      [formControlName]="
+                                                            'username'
+                                                      "
+                                                      placeholder="Username"
+                                                      type="text" /></fieldset
+                                          ><fieldset class="form-group">
+                                                <textarea
+                                                      class="form-control form-control-lg ng-untouched ng-pristine ng-valid"
+                                                      [formControlName]="'bio'"
+                                                      placeholder="Short bio about you"
+                                                      rows="8">
+                                                </textarea></fieldset
+                                          ><fieldset class="form-group"
+                                                ><input
+                                                      class="form-control form-control-lg ng-untouched ng-pristine ng-valid"
+                                                      [formControlName]="
+                                                            'email'
+                                                      "
+                                                      placeholder="Email"
+                                                      type="email" /></fieldset
+                                          ><fieldset class="form-group"
+                                                ><input
+                                                      class="form-control form-control-lg ng-untouched ng-pristine ng-valid"
+                                                      [formControlName]="
+                                                            'password'
+                                                      "
+                                                      placeholder="New Password IS REQUIRED"
+                                                      type="password"
+                                          /></fieldset>
+                                          <button
+                                                [disabled]="
+                                                      !currentUserForm.valid
+                                                "
+                                                class="btn btn-lg btn-primary pull-xs-right"
+                                                type="submit">
+                                                Update Settings
+                                          </button></fieldset
+                                    ></form
+                              >
+                        </ng-container>
+                        <ng-template #loading>
+                              <mc-loading></mc-loading>
+                        </ng-template>
+                        <hr /><button class="btn btn-outline-danger">
                               Or click here to logout.
                         </button></div
                   ></div
