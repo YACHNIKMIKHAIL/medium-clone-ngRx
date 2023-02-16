@@ -1,0 +1,9 @@
+<div class="pull-xs-right">
+      <button
+            class="btn btn-sm"
+            [ngClass]="isFavoriteProps ? 'btn-primary' : 'btn-outline-primary'"
+            (click)="likeOrDislike()"
+            ><i class="ion-heart"></i>
+            {{ favoritesCountProps }}
+      </button>
+</div>

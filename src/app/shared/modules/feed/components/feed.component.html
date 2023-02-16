@@ -26,17 +26,14 @@
                                                 {{ article.author.username }}</a
                                           ><span class="date">
                                                 {{ article.updatedAt | date }}
-                                          </span></div
-                                    >
-                                    <div class="pull-xs-right">
-                                          <button
-                                                class="btn btn-sm btn-outline-primary"
-                                                ><i class="ion-heart"></i>
-                                                {{
-                                                      article.favoritesCount
-                                                }}</button
-                                          >
+                                          </span>
                                     </div>
+                                    <mc-favorite
+                                          [isFavorite]="article.favorited"
+                                          [favoritesCount]="
+                                                article.favoritesCount
+                                          "
+                                          [slug]="article.slug"></mc-favorite>
                               </div>
                         </div>
                         <a
