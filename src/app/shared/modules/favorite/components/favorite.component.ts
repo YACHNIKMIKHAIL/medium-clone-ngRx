@@ -17,6 +17,7 @@ import { Router } from "@angular/router";
 export class FavoriteComponent implements OnInit, OnDestroy {
       @Input("favoritesCount") favoritesCountProps!: number;
       @Input("isFavorite") isFavoriteProps!: boolean;
+      @Input("text") textProps?: string;
       @Input("slug") slugProps!: string;
       isLoading$ = new Observable<boolean>();
       isLoggedIn: boolean | null = null;

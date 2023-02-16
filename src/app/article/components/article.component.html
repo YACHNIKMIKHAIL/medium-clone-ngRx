@@ -1,7 +1,7 @@
 <div class="article-page">
       <div class="banner">
             <div class="container" *ngIf="article"
-                  ><h1>{{ article.title }} </h1>
+                  ><h1>{{ article.title }}{{ article.favorited }}</h1>
                   <div class="article-meta"
                         ><a
                               [routerLink]="[
@@ -44,16 +44,23 @@
                                     class="btn btn-sm action-btn btn-secondary"
                                     ><i class="ion-plus-round"></i>
                                     &nbsp; Unfollow
-                                    {{ article.author.username }} </button
-                              ><button class="btn btn-sm btn-outline-primary"
-                                    ><i class="ion-heart"></i>
-                                    Favorite Article
-                                    <span class="counter">{{
-                                          article.favoritesCount
-                                    }}</span></button
-                              ></span
-                        ></div
-                  >
+                                    {{ article.author.username }}
+                              </button>
+                              <!--                      <button class="btn btn-sm btn-outline-primary"-->
+                              <!--                                    ><i class="ion-heart"></i>-->
+                              <!--                                    Favorite Article-->
+                              <!--                                    <span class="counter">{{-->
+                              <!--                                          article.favoritesCount-->
+                              <!--                                    }}</span></button-->
+                              <!--                              >-->
+                              <mc-favorite
+                                    [favoritesCount]="article.favoritesCount"
+                                    [slug]="article.slug"
+                                    [isFavorite]="article.favorited"
+                                    [text]="
+                                          'Favorite Article'
+                                    "></mc-favorite> </span
+                  ></div>
             </div>
       </div>
       <div class="container page">
@@ -111,18 +118,26 @@
                                                 class="btn btn-sm action-btn btn-secondary"
                                                 ><i class="ion-plus-round"></i>
                                                 &nbsp; Unfollow
-                                                {{
-                                                      article.author.username
-                                                }} </button
-                                          ><button
-                                                class="btn btn-sm btn-outline-primary"
-                                                ><i class="ion-heart"></i>
-                                                Favorite Article
-                                                <span class="counter">{{
+                                                {{ article.author.username }}
+                                          </button>
+                                          <!--                                  <button-->
+                                          <!--                                                class="btn btn-sm btn-outline-primary"-->
+                                          <!--                                                ><i class="ion-heart"></i>-->
+                                          <!--                                                Favorite Article-->
+                                          <!--                                                <span class="counter">{{-->
+                                          <!--                                                      article.favoritesCount-->
+                                          <!--                                                }}</span></button-->
+                                          <!--                                          >-->
+                                          <mc-favorite
+                                                [favoritesCount]="
                                                       article.favoritesCount
-                                                }}</span></button
-                                          ></span
-                                    >
+                                                "
+                                                [slug]="article.slug"
+                                                [isFavorite]="article.favorited"
+                                                [text]="
+                                                      'Favorite Article'
+                                                "></mc-favorite>
+                                    </span>
                               </div>
                         </div>
                         <div class="row">

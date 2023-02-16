@@ -11,6 +11,11 @@ import {
       deleteArticleFailureAction,
       deleteArticleSuccessAction,
 } from "./actions/delete-article.actions";
+import {
+      dislikeFeedSuccessAction,
+      likeFeedSuccessAction,
+} from "../../shared/modules/favorite/store/actions/favorite.actions";
+import { ArticleInterface } from "../../shared/types/article.interface";
 
 const initialState: ArticleStateInterface = {
       isLoading: true,
@@ -50,6 +55,22 @@ export const articleReducer = createReducer(
             isLoading: false,
             error: "Something with fetch article went wrong !",
             data: null,
+      })),
+      on(likeFeedSuccessAction, state => ({
+            ...state,
+            data: {
+                  ...state.data,
+                  favorited: true,
+                  favoritesCount: state.data && state.data.favoritesCount + 1,
+            } as ArticleInterface,
+      })),
+      on(dislikeFeedSuccessAction, state => ({
+            ...state,
+            data: {
+                  ...state.data,
+                  favorited: false,
+                  favoritesCount: state.data && state.data.favoritesCount - 1,
+            }  as ArticleInterface,
       })),
 );
 
