@@ -13,7 +13,7 @@ export class LogoutCurrentUserEffect {
                         ofType(logoutAction),
                         tap(() => {
                               this.persistenceService.set("accessToken", "");
-                              this.router.navigate(["/"]);
+                                    this.router.navigate(["/"]);
                         }),
                   ),
             { dispatch: false },
