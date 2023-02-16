@@ -2,8 +2,9 @@
       <button
             class="btn btn-sm"
             [ngClass]="isFavoritedProps ? 'btn-primary' : 'btn-outline-primary'"
+            (click)="handleLike()"
             ><i class="ion-heart"></i>
-            {{ textProps }}
-            {{ favoritesCountProps }}</button
+            <span>{{ textProps }}</span>
+            <span>&nbsp; {{ favoritesCountProps }}</span></button
       >
 </div>
