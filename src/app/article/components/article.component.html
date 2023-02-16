@@ -39,21 +39,21 @@
                                     ><i class="ion-trash-a"></i>
                                     Delete Article
                               </button></span
-                        ><span *ngIf="!(isAuthor$ | async)"
-                              ><button
+                        ><span *ngIf="!(isAuthor$ | async)">
+                              <button
                                     class="btn btn-sm action-btn btn-secondary"
                                     ><i class="ion-plus-round"></i>
                                     &nbsp; Unfollow
-                                    {{ article.author.username }} </button
-                              ><button class="btn btn-sm btn-outline-primary"
-                                    ><i class="ion-heart"></i>
-                                    Favorite Article
-                                    <span class="counter">{{
-                                          article.favoritesCount
-                                    }}</span></button
-                              ></span
-                        ></div
-                  >
+                                    {{ article.author.username }}
+                              </button>
+                              <mc-add-to-favorites
+                                    [isFavorited]="article.favorited"
+                                    [articleSlug]="article.slug"
+                                    [favoritesCount]="article.favoritesCount"
+                                    [text]="
+                                          'Favorite Article'
+                                    "></mc-add-to-favorites> </span
+                  ></div>
             </div>
       </div>
       <div class="container page">
@@ -106,23 +106,26 @@
                                                 ><i class="ion-trash-a"></i>
                                                 Delete Article
                                           </button></span
-                                    ><span *ngIf="!(isAuthor$ | async)"
-                                          ><button
+                                    ><span *ngIf="!(isAuthor$ | async)">
+                                          <button
                                                 class="btn btn-sm action-btn btn-secondary"
                                                 ><i class="ion-plus-round"></i>
                                                 &nbsp; Unfollow
-                                                {{
-                                                      article.author.username
-                                                }} </button
-                                          ><button
-                                                class="btn btn-sm btn-outline-primary"
-                                                ><i class="ion-heart"></i>
-                                                Favorite Article
-                                                <span class="counter">{{
+                                                {{ article.author.username }}
+                                          </button>
+                                          >
+                                          <mc-add-to-favorites
+                                                [isFavorited]="
+                                                      article.favorited
+                                                "
+                                                [articleSlug]="article.slug"
+                                                [favoritesCount]="
                                                       article.favoritesCount
-                                                }}</span></button
-                                          ></span
-                                    >
+                                                "
+                                                [text]="
+                                                      'Favorite Article'
+                                                "></mc-add-to-favorites>
+                                    </span>
                               </div>
                         </div>
                         <div class="row">
