@@ -36,27 +36,6 @@ export class AddToFavoritesEffect {
                   }),
             ),
       );
-      // removeFromFavorites$ = createEffect(() =>
-      //       this.actions$.pipe(
-      //             ofType(removeFromFavoritesAction),
-      //             switchMap(({ slug }) => {
-      //                   return this.addToFavoritesService
-      //                         .removeArticleFromFavorite(slug)
-      //                         .pipe(
-      //                               map((article: ArticleInterface) => {
-      //                                     return removeFromFavoritesSuccessAction(
-      //                                           { article },
-      //                                     );
-      //                               }),
-      //                               catchError(() => {
-      //                                     return of(
-      //                                           removeFromFavoritesFailureAction(),
-      //                                     );
-      //                               }),
-      //                         );
-      //             }),
-      //       ),
-      // );
 
       constructor(
             private actions$: Actions,

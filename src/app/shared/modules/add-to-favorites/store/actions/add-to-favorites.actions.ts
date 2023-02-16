@@ -13,16 +13,3 @@ export const addToFavoritesSuccessAction = createAction(
 export const addToFavoritesFailureAction = createAction(
       ActionTypes.ADD_TO_FAVORITES_FAILURE,
 );
-
-// export const removeFromFavoritesAction = createAction(
-//       ActionTypes.REMOVE_FROM_FAVORITES,
-//       props<{ slug: string }>(),
-// );
-
-// export const removeFromFavoritesSuccessAction = createAction(
-//       ActionTypes.REMOVE_FROM_FAVORITES_SUCCESS,
-//       props<{ article: ArticleInterface }>(),
-// );
-// export const removeFromFavoritesFailureAction = createAction(
-//       ActionTypes.REMOVE_FROM_FAVORITES_FAILURE,
-// );
