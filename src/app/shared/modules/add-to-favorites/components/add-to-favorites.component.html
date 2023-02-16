@@ -1,10 +1,8 @@
-<div class="pull-xs-right">
-      <button
-            class="btn btn-sm"
-            [ngClass]="isFavoritedProps ? 'btn-primary' : 'btn-outline-primary'"
-            (click)="handleLike()"
-            ><i class="ion-heart"></i>
-            <span>{{ textProps }}</span>
-            <span>&nbsp; {{ favoritesCountProps }}</span></button
-      >
-</div>
+<button
+      class="btn btn-sm"
+      [ngClass]="isFavorited ? 'btn-primary' : 'btn-outline-primary'"
+      (click)="handleLike()"
+      ><i class="ion-heart"></i>
+      <span>{{ text }}</span>
+      <span>&nbsp; {{ favoritesCount }}</span></button
+>
