@@ -28,15 +28,12 @@
                                                 {{ article.updatedAt | date }}
                                           </span></div
                                     >
-                                    <div class="pull-xs-right">
-                                          <button
-                                                class="btn btn-sm btn-outline-primary"
-                                                ><i class="ion-heart"></i>
-                                                {{
-                                                      article.favoritesCount
-                                                }}</button
-                                          >
-                                    </div>
+                                    <mc-add-to-favorites
+                                          [isFavorited]="article.favorited"
+                                          [articleSlug]="article.slug"
+                                          [favoritesCount]="
+                                                article.favoritesCount
+                                          "></mc-add-to-favorites>
                               </div>
                         </div>
                         <a
