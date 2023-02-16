@@ -1,4 +1,11 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { Observable } from "rxjs";
+import { select, Store } from "@ngrx/store";
+import { disabledSlugSelector, isLoadingSelector } from "../store/selectors";
+import {
+      dislikeFavoriteAction,
+      favoriteAction,
+} from "../store/actions/favorite.actions";
 
 @Component({
       selector: "mc-favorite",
@@ -9,17 +16,19 @@ export class FavoriteComponent implements OnInit {
       @Input("favoritesCount") favoritesCountProps!: number;
       @Input("isFavorite") isFavoriteProps!: boolean;
       @Input("slug") slugProps!: string;
-      constructor() {}
+      isLoading$ = new Observable<boolean>();
+      disabledSlug$ = new Observable<string | null>();
+      constructor(private store: Store) {}
 
-      ngOnInit(): void {}
+      ngOnInit(): void {
+            this.isLoading$ = this.store.pipe(select(isLoadingSelector));
+            this.disabledSlug$ = this.store.pipe(select(disabledSlugSelector));
+      }
 
       likeOrDislike() {
-            if (this.isFavoriteProps) {
-                  console.log("DISLIKE - ", this.slugProps);
-                  //del https://api.realworld.io/api/articles/If-we-quant
-            } else {
-                  console.log("LIKE + ", this.slugProps);
-                  //post https://api.realworld.io/api/articles/If-we-quant
-            }
+            const slug = this.slugProps;
+            this.isFavoriteProps
+                  ? this.store.dispatch(dislikeFavoriteAction({ slug }))
+                  : this.store.dispatch(favoriteAction({ slug }));
       }
 }

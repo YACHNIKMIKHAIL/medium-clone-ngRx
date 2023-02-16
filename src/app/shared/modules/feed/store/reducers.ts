@@ -6,6 +6,11 @@ import {
 } from "./actions/get-feed.actions";
 import { FeedStateInterface } from "../types/feed-state.interface";
 import { routerNavigatedAction } from "@ngrx/router-store";
+import {
+      dislikeFeedSuccessAction,
+      likeFeedSuccessAction,
+} from "../../favorite/store/actions/favorite.actions";
+import { GetFeedResponseInterface } from "../types/get-feed-response.interface";
 
 const initialState: FeedStateInterface = {
       isLoading: true,
@@ -27,6 +32,38 @@ export const feedReducer = createReducer(
             isLoading: false,
             error: "Something went wrong !",
             data: null,
+      })),
+      on(likeFeedSuccessAction, (state, action) => ({
+            ...state,
+            data: {
+                  ...state.data,
+                  articles: state.data?.articles.map(article =>
+                        article.slug === action.slug
+                              ? {
+                                      ...article,
+                                      favorited: true,
+                                      favoritesCount:
+                                            article.favoritesCount + 1,
+                                }
+                              : article,
+                  ),
+            } as GetFeedResponseInterface | null,
+      })),
+      on(dislikeFeedSuccessAction, (state, action) => ({
+            ...state,
+            data: {
+                  ...state.data,
+                  articles: state.data?.articles.map(article =>
+                        article.slug === action.slug
+                              ? {
+                                      ...article,
+                                      favorited: false,
+                                      favoritesCount:
+                                            article.favoritesCount - 1,
+                                }
+                              : article,
+                  ),
+            } as GetFeedResponseInterface | null,
       })),
       on(routerNavigatedAction, (): FeedStateInterface => initialState),
 );

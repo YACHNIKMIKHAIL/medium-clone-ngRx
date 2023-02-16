@@ -3,6 +3,9 @@
             class="btn btn-sm"
             [ngClass]="isFavoriteProps ? 'btn-primary' : 'btn-outline-primary'"
             (click)="likeOrDislike()"
+            [disabled]="
+                  (isLoading$ | async) && (disabledSlug$ | async) === slugProps
+            "
             ><i class="ion-heart"></i>
             {{ favoritesCountProps }}
       </button>
