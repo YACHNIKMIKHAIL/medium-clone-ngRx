@@ -8,7 +8,7 @@ import { FeedStateInterface } from "../types/feed-state.interface";
 import { routerNavigatedAction } from "@ngrx/router-store";
 
 const initialState: FeedStateInterface = {
-      isLoading: true,
+      isLoading: false,
       error: null,
       data: null,
 };

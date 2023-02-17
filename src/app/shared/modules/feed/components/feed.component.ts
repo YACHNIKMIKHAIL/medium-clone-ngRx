@@ -77,7 +77,8 @@ export class FeedComponent implements OnInit, OnDestroy, OnChanges {
                   ...parsedUrl,
             });
 
-            const apiUrlWithParams = `${this.apiUrlProps}?${turnedIntoAStringParams}`;
+            // const apiUrlWithParams = `${this.apiUrlProps}?${turnedIntoAStringParams}`;
+            const apiUrlWithParams = `${this.apiUrlProps}`;
             this.store.dispatch(getFeedAction({ url: apiUrlWithParams }));
       }
 

@@ -8,7 +8,7 @@ import {
 } from "../store/selectors";
 import { combineLatest, filter, map, Observable, Subscription } from "rxjs";
 import { getUserProfileAction } from "../store/actions/get-user-profile.actions";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Params, Router } from "@angular/router";
 import { currentUserSelector } from "../../auth/store/selectors";
 import { CurrentUserInterface } from "../../shared/types/current-user.interface";
 
@@ -34,18 +34,20 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       ngOnInit(): void {
             this.initializeListeners();
             this.initializeValues();
-            this.fetchData();
       }
 
-      initializeValues(): void {
+      getApiUrl(): void {
             const isFavorited = this.router.url.includes("favorites");
-
-            this.slug = this.route.snapshot.paramMap.get("slug") as string;
-            this.isLoading$ = this.store.pipe(select(isLoadingSelector));
-            this.error$ = this.store.pipe(select(errorSelector));
             this.apiUrl = isFavorited
                   ? `/articles?favorited=${this.slug}`
                   : `/articles?author=${this.slug}`;
+      }
+
+      initializeValues(): void {
+            this.slug = this.route.snapshot.paramMap.get("slug") as string;
+            this.isLoading$ = this.store.pipe(select(isLoadingSelector));
+            this.error$ = this.store.pipe(select(errorSelector));
+            this.getApiUrl();
 
             this.isCurrentUserProfile$ = combineLatest(
                   this.store.pipe(select(currentUserSelector), filter(Boolean)),
@@ -64,13 +66,18 @@ export class UserProfileComponent implements OnInit, OnDestroy {
             this.userProfileSubscription = this.store
                   .pipe(select(userProfileSelector))
                   .subscribe(data => (this.userProfile = data));
+
+            this.route.params.subscribe((params: Params) => {
+                  this.slug = params["slug"];
+                  this.getApiUrl();
+                  this.fetchData();
+            });
       }
 
       fetchData(): void {
-            this.slug &&
-                  this.store.dispatch(
-                        getUserProfileAction({ slug: this.slug }),
-                  );
+            this.store.dispatch(
+                  getUserProfileAction({ slug: this.slug as string }),
+            );
       }
 
       ngOnDestroy(): void {
