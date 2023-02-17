@@ -1,103 +1,48 @@
-import { AuthStateInterface } from "../types/authState.interface";
 import { Action, createReducer, on } from "@ngrx/store";
+import { UserProfileStateInterface } from "../types/user-profile-state.interface";
 import {
-      registerAction,
-      registerFailureAction,
-      registerSuccessAction,
-} from "./actions/register.actions";
-import {
-      loginAction,
-      loginFailureAction,
-      loginSuccessAction,
-} from "./actions/login.action";
-import {
-      getCurrentUserAction,
-      getCurrentUserFailureAction,
-      getCurrentUserSuccessAction,
+      getUserProfileAction,
+      getUserProfileFailureAction,
+      getUserProfileSuccessAction,
 } from "./actions/get-user-profile.actions";
-import { updateCurrentUserSuccessAction } from "./actions/update-current-user.actions";
-import { logoutAction } from "./actions/sync.actions";
 
-const initialState: AuthStateInterface = {
-      isSubmitting: false,
-      currentUser: null,
-      isLoggedIn: null,
-      validationErrors: null,
+const initialState: UserProfileStateInterface = {
+      data: null,
       isLoading: false,
+      error: null,
 };
 
-export const authReducer = createReducer(
+export const userProfileReducer = createReducer(
       initialState,
       on(
-            registerAction,
-            (state): AuthStateInterface => ({
+            getUserProfileAction,
+            (state): UserProfileStateInterface => ({
                   ...state,
-                  isSubmitting: true,
-                  validationErrors: null,
+                  isLoading: true,
             }),
       ),
       on(
-            registerSuccessAction,
-            (state, action): AuthStateInterface => ({
+            getUserProfileSuccessAction,
+            (state, action): UserProfileStateInterface => ({
                   ...state,
-                  isSubmitting: false,
-                  currentUser: action.currentUser,
-                  isLoggedIn: true,
+                  isLoading: false,
+                  data: action.profile,
+                  error: null,
             }),
       ),
       on(
-            registerFailureAction,
-            (state, action): AuthStateInterface => ({
+            getUserProfileFailureAction,
+            (state): UserProfileStateInterface => ({
                   ...state,
-                  isSubmitting: false,
-                  validationErrors: action.errors,
+                  isLoading: false,
+                  error: "some things bad was happen in back-end",
             }),
       ),
-      on(loginAction, (state: AuthStateInterface) => ({
-            ...state,
-            isSubmitting: true,
-            validationErrors: null,
-      })),
-      on(
-            loginSuccessAction,
-            (state, action): AuthStateInterface => ({
-                  ...state,
-                  isSubmitting: false,
-                  currentUser: action.currentUser,
-                  isLoggedIn: true,
-            }),
-      ),
-      on(loginFailureAction, (state, action) => ({
-            ...state,
-            isSubmitting: false,
-            validationErrors: action.errors,
-      })),
-      on(getCurrentUserAction, state => ({
-            ...state,
-            isLoading: true,
-      })),
-      on(getCurrentUserSuccessAction, (state, action) => ({
-            ...state,
-            isLoggedIn: true,
-            currentUser: action.currentUser,
-            isLoading: false,
-      })),
-      on(getCurrentUserFailureAction, state => ({
-            ...state,
-            isLoggedIn: false,
-            currentUser: null,
-            isLoading: false,
-      })),
-      on(updateCurrentUserSuccessAction, (state, action) => ({
-            ...state,
-            currentUser: action.currentUserInput,
-      })),
-      on(logoutAction, () => ({ ...initialState, isLoggedIn: false })),
 );
 
 export function reducer(
-      state: AuthStateInterface,
+      state: UserProfileStateInterface,
       action: Action,
-): AuthStateInterface {
-      return authReducer(state, action);
+): UserProfileStateInterface {
+      return userProfileReducer(state, action);
 }
