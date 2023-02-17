@@ -1,29 +1,19 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { AuthStateInterface } from "../types/authState.interface";
+import { UserProfileStateInterface } from "../types/user-profile-state.interface";
 
-export const authFeatureSelector =
-      createFeatureSelector<AuthStateInterface>("auth");
+export const userProfileFeatureSelector =
+      createFeatureSelector<UserProfileStateInterface>("userProfile");
 
-export const isSubmittingSelector = createSelector(
-      authFeatureSelector,
-      (authState: AuthStateInterface) => authState.isSubmitting,
+export const isLoadingSelector = createSelector(
+      userProfileFeatureSelector,
+      (state: UserProfileStateInterface) => state.isLoading,
 );
 
-export const validationErrorsSelector = createSelector(
-      authFeatureSelector,
-      (authState: AuthStateInterface) => authState.validationErrors,
+export const userProfileSelector = createSelector(
+      userProfileFeatureSelector,
+      (state: UserProfileStateInterface) => state.data,
 );
-export const isLoggedInSelector = createSelector(
-      authFeatureSelector,
-      (authState: AuthStateInterface) => authState.isLoggedIn,
-);
-
-export const isAnonymousSelector = createSelector(
-      authFeatureSelector,
-      (authState: AuthStateInterface) => authState.isLoggedIn === false,
-);
-
-export const currentUserSelector = createSelector(
-      authFeatureSelector,
-      (authState: AuthStateInterface) => authState.currentUser,
+export const errorSelector = createSelector(
+      userProfileFeatureSelector,
+      (state: UserProfileStateInterface) => state.error,
 );

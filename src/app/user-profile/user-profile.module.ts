@@ -22,7 +22,7 @@ const routes: Routes = [
       imports: [
             CommonModule,
             RouterModule.forChild(routes),
-            StoreModule.forFeature("User profile", reducer),
+            StoreModule.forFeature("userProfile", reducer),
             EffectsModule.forFeature([GetUserProfileEffect]),
       ],
 })
