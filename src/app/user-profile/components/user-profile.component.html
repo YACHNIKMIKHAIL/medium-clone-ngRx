@@ -1,29 +1,46 @@
-<div class="profile-page"
-      ><div class="user-info"
-            ><div class="container"
-                  ><div class="row"
-                        ><div class="col-xs-12 col-md-10 offset-md-1"
-                              ><img
-                                    class="user-img"
-                                    src="https://api.realworld.io/images/demo-avatar.png"
-                                    alt="bla-bla" /><h4>Anah Benešová</h4><p></p
-                              ><div
-                                    ><button
-                                          class="btn btn-sm action-btn btn-secondary"
-                                          ><i class="ion-plus-round"></i> &nbsp;
-                                          Unfollow Anah Benešová
-                                    </button></div
-                              ><a
-                                    class="btn btn-sm btn-outline-secondary action-btn"
-                                    hidden=""
-                                    href="/settings"
-                                    ><i class="ion-gear-a"></i> Edit Profile
-                                    Settings
-                              </a></div
+<div class="profile-page">
+      <ng-container *ngIf="!(isLoading$ | async); else loading">
+            <ng-container *ngIf="!(error$ | async); else loading">
+                  <div class="user-info" *ngIf="userProfile"
+                        ><div class="container"
+                              ><div class="row"
+                                    ><div
+                                          class="col-xs-12 col-md-10 offset-md-1"
+                                          ><img
+                                                class="user-img"
+                                                [src]="userProfile.image"
+                                                alt="bla-bla" /><h4
+                                                >{{userProfile.username}}</h4
+                                          ><p></p
+                                          ><div
+                                                ><button
+                                                      class="btn btn-sm action-btn btn-secondary"
+                                                      ><i
+                                                            class="ion-plus-round"></i>
+                                                      &nbsp; Unfollow {{userProfile.username}}
+                                                </button></div
+                                          ><a
+                                                class="btn btn-sm btn-outline-secondary action-btn"
+                                                hidden=""
+                                                href="/settings"
+                                                ><i class="ion-gear-a"></i> Edit
+                                                Profile Settings
+                                          </a></div
+                                    ></div
+                              ></div
                         ></div
-                  ></div
-            ></div
-      ><div class="container"
+                  >
+            </ng-container>
+            <ng-template #error>
+                  <mc-error-message
+                        [message]="error$ | async"></mc-error-message>
+            </ng-template>
+      </ng-container>
+      <ng-template #loading>
+            <mc-loading></mc-loading>
+      </ng-template>
+
+      <div class="container"
             ><div class="row"
                   ><div class="col-xs-12 col-md-10 offset-md-1"
                         ><div class="articles-toggle"

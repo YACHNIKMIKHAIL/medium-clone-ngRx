@@ -6,6 +6,8 @@ import { EffectsModule } from "@ngrx/effects";
 import { GetUserProfileEffect } from "./store/effects/get-user-profile.effect";
 import { StoreModule } from "@ngrx/store";
 import { reducer } from "./store/reducers";
+import { LoadingModule } from "../shared/modules/loading/loading.module";
+import { ErrorMessageModule } from "../shared/modules/error-message/error-message.module";
 
 const routes: Routes = [
       {
@@ -24,6 +26,8 @@ const routes: Routes = [
             RouterModule.forChild(routes),
             StoreModule.forFeature("userProfile", reducer),
             EffectsModule.forFeature([GetUserProfileEffect]),
+            LoadingModule,
+            ErrorMessageModule,
       ],
 })
 export class UserProfileModule {}
