@@ -1,1 +1,57 @@
-<p>user-profile works!</p>
+<div class="profile-page"
+      ><div class="user-info"
+            ><div class="container"
+                  ><div class="row"
+                        ><div class="col-xs-12 col-md-10 offset-md-1"
+                              ><img
+                                    class="user-img"
+                                    src="https://api.realworld.io/images/demo-avatar.png"
+                                    alt="bla-bla" /><h4>Anah Benešová</h4><p></p
+                              ><div
+                                    ><button
+                                          class="btn btn-sm action-btn btn-secondary"
+                                          ><i class="ion-plus-round"></i> &nbsp;
+                                          Unfollow Anah Benešová
+                                    </button></div
+                              ><a
+                                    class="btn btn-sm btn-outline-secondary action-btn"
+                                    hidden=""
+                                    href="/settings"
+                                    ><i class="ion-gear-a"></i> Edit Profile
+                                    Settings
+                              </a></div
+                        ></div
+                  ></div
+            ></div
+      ><div class="container"
+            ><div class="row"
+                  ><div class="col-xs-12 col-md-10 offset-md-1"
+                        ><div class="articles-toggle"
+                              ><ul class="nav nav-pills outline-active"
+                                    ><li class="nav-item"
+                                          ><a
+                                                class="nav-link"
+                                                [routerLinkActive]="'active'"
+                                                href="/profile/Anah%20Bene%C5%A1ov%C3%A1">
+                                                My Posts
+                                          </a></li
+                                    ><li class="nav-item"
+                                          ><a
+                                                class="nav-link active"
+                                                [routerLinkActive]="'active'"
+                                                href="/profile/Anah%20Bene%C5%A1ov%C3%A1/favorites">
+                                                Favorited Posts
+                                          </a></li
+                                    ></ul
+                              ></div
+                        ><router-outlet></router-outlet
+                        ><div
+                              ><div
+                                    ><div class="app-article-preview" hidden="">
+                                          Loading articles... </div
+                                    ><div class="app-article-preview">
+                                          No articles are here... yet. </div
+                                    ><nav hidden=""
+                                          ><ul
+                                                class="pagination"></ul></nav></div></div></div></div></div
+></div>
