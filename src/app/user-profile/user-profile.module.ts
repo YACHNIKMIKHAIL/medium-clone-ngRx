@@ -8,6 +8,7 @@ import { StoreModule } from "@ngrx/store";
 import { reducer } from "./store/reducers";
 import { LoadingModule } from "../shared/modules/loading/loading.module";
 import { ErrorMessageModule } from "../shared/modules/error-message/error-message.module";
+import { FeedModule } from "../shared/modules/feed/feed.module";
 
 const routes: Routes = [
       {
@@ -28,6 +29,7 @@ const routes: Routes = [
             EffectsModule.forFeature([GetUserProfileEffect]),
             LoadingModule,
             ErrorMessageModule,
+            FeedModule,
       ],
 })
 export class UserProfileModule {}

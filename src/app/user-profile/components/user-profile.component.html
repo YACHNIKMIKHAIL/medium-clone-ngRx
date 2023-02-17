@@ -9,19 +9,30 @@
                                           ><img
                                                 class="user-img"
                                                 [src]="userProfile.image"
-                                                alt="bla-bla" /><h4
-                                                >{{userProfile.username}}</h4
+                                                alt="bla-bla" /><h4>{{
+                                                userProfile.username
+                                          }}</h4
                                           ><p></p
                                           ><div
                                                 ><button
+                                                      *ngIf="
+                                                            !(
+                                                                  isCurrentUserProfile$
+                                                                  | async
+                                                            )
+                                                      "
                                                       class="btn btn-sm action-btn btn-secondary"
                                                       ><i
                                                             class="ion-plus-round"></i>
-                                                      &nbsp; Unfollow {{userProfile.username}}
+                                                      &nbsp; Unfollow
+                                                      {{ userProfile.username }}
                                                 </button></div
                                           ><a
+                                                *ngIf="
+                                                      isCurrentUserProfile$
+                                                            | async
+                                                "
                                                 class="btn btn-sm btn-outline-secondary action-btn"
-                                                hidden=""
                                                 href="/settings"
                                                 ><i class="ion-gear-a"></i> Edit
                                                 Profile Settings
@@ -61,14 +72,19 @@
                                           </a></li
                                     ></ul
                               ></div
-                        ><router-outlet></router-outlet
-                        ><div
-                              ><div
-                                    ><div class="app-article-preview" hidden="">
-                                          Loading articles... </div
-                                    ><div class="app-article-preview">
-                                          No articles are here... yet. </div
-                                    ><nav hidden=""
-                                          ><ul
-                                                class="pagination"></ul></nav></div></div></div></div></div
-></div>
+                        >
+                        <mc-feed [apiUrl]="apiUrl"></mc-feed>
+                        <!--        <router-outlet></router-outlet-->
+                        <!--                        ><div-->
+                        <!--                              ><div-->
+                        <!--                                    ><div class="app-article-preview" hidden="">-->
+                        <!--                                          Loading articles... </div-->
+                        <!--                                    ><div class="app-article-preview">-->
+                        <!--                                          No articles are here... yet. </div-->
+                        <!--                                    ><nav hidden=""-->
+                        <!--                                          ><ul-->
+                        <!--                                                class="pagination"></ul></nav></div></div>-->
+                  </div></div
+            ></div
+      ></div
+>
