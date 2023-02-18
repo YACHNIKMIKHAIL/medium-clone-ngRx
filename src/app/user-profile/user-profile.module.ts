@@ -9,6 +9,7 @@ import { reducer } from "./store/reducers";
 import { LoadingModule } from "../shared/modules/loading/loading.module";
 import { ErrorMessageModule } from "../shared/modules/error-message/error-message.module";
 import { FeedModule } from "../shared/modules/feed/feed.module";
+import { FollowModule } from "../shared/modules/follow/follow.module";
 
 const routes: Routes = [
       {
@@ -30,6 +31,7 @@ const routes: Routes = [
             LoadingModule,
             ErrorMessageModule,
             FeedModule,
+            FollowModule,
       ],
 })
 export class UserProfileModule {}

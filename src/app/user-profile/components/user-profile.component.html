@@ -12,20 +12,33 @@
                                                 alt="profile image" />
                                           <h4>{{ userProfile.username }}</h4
                                           ><p></p
-                                          ><div
-                                                ><button
+                                          ><div>
+                                                <!--                      <button-->
+                                                <!--                                                                                                      *ngIf="-->
+                                                <!--                                                                                                            !(-->
+                                                <!--                                                                                                                  isCurrentUserProfile$-->
+                                                <!--                                                                                                                  | async-->
+                                                <!--                                                                                                            )-->
+                                                <!--                                                      "-->
+                                                <!--                                                      class="btn btn-sm action-btn btn-secondary"-->
+                                                <!--                                                      ><i-->
+                                                <!--                                                            class="ion-plus-round"></i>-->
+                                                <!--                                                      &nbsp; Unfollow-->
+                                                <!--                                                      {{ userProfile.username }}-->
+                                                <!--                                                </button>-->
+                                                <mc-follow
                                                       *ngIf="
                                                             !(
                                                                   isCurrentUserProfile$
                                                                   | async
                                                             )
                                                       "
-                                                      class="btn btn-sm action-btn btn-secondary"
-                                                      ><i
-                                                            class="ion-plus-round"></i>
-                                                      &nbsp; Unfollow
-                                                      {{ userProfile.username }}
-                                                </button></div
+                                                      [name]="
+                                                            userProfile.username
+                                                      "
+                                                      [isFollowed]="
+                                                            userProfile.following
+                                                      "></mc-follow> </div
                                           ><a
                                                 *ngIf="
                                                       isCurrentUserProfile$
@@ -82,18 +95,5 @@
                                     ></ul
                               ></div
                         >
-                        <mc-feed [apiUrl]="apiUrl"></mc-feed>
-                        <!--        <router-outlet></router-outlet-->
-                        <!--                        ><div-->
-                        <!--                              ><div-->
-                        <!--                                    ><div class="app-article-preview" hidden="">-->
-                        <!--                                          Loading articles... </div-->
-                        <!--                                    ><div class="app-article-preview">-->
-                        <!--                                          No articles are here... yet. </div-->
-                        <!--                                    ><nav hidden=""-->
-                        <!--                                          ><ul-->
-                        <!--                                                class="pagination"></ul></nav></div></div>-->
-                  </div></div
-            ></div
-      ></div
->
+                        <mc-feed [apiUrl]="apiUrl"></mc-feed> </div></div></div
+></div>
