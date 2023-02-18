@@ -5,6 +5,7 @@ import {
       getUserProfileFailureAction,
       getUserProfileSuccessAction,
 } from "./actions/get-user-profile.actions";
+import { followSuccessAction } from "../../shared/modules/follow/store/actions/follow.actions";
 
 const initialState: UserProfileStateInterface = {
       data: null,
@@ -23,6 +24,15 @@ export const userProfileReducer = createReducer(
       ),
       on(
             getUserProfileSuccessAction,
+            (state, action): UserProfileStateInterface => ({
+                  ...state,
+                  isLoading: false,
+                  data: action.profile,
+                  error: null,
+            }),
+      ),
+      on(
+            followSuccessAction,
             (state, action): UserProfileStateInterface => ({
                   ...state,
                   isLoading: false,
