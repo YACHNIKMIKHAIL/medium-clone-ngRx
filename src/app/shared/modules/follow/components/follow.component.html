@@ -1,0 +1,16 @@
+<!--  *ngIf="-->
+<!--                                                            !(-->
+<!--                                                                  isCurrentUserProfile$-->
+<!--                                                                  | async-->
+<!--                                                            )-->
+<!--                                                      "-->
+<button class="btn btn-sm action-btn btn-secondary"
+      ><span *ngIf="isFollowedProps"
+            ><i class="ion-minus-round"></i> &nbsp; Unfollow</span
+      >
+      <span *ngIf="!isFollowedProps"
+            ><i class="ion-plus-round"></i> &nbsp; Follow</span
+      >
+
+      {{ nameProps }}
+</button>
