@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { PopularTagFeedComponent } from "./popular-tag-feed.component";
 import { ActivatedRoute } from "@angular/router";
 import { of } from "rxjs";
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
 describe("PopularTagFeedComponent", () => {
       let component: PopularTagFeedComponent;
@@ -19,6 +20,7 @@ describe("PopularTagFeedComponent", () => {
                         },
                   ],
                   declarations: [PopularTagFeedComponent],
+                  schemas: [CUSTOM_ELEMENTS_SCHEMA],
             }).compileComponents();
 
             fixture = TestBed.createComponent(PopularTagFeedComponent);

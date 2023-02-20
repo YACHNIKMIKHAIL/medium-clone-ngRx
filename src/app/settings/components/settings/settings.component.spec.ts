@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { SettingsComponent } from "./settings.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { provideMockStore } from "@ngrx/store/testing";
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
 describe("SettingsComponent", () => {
       let component: SettingsComponent;
@@ -13,6 +14,7 @@ describe("SettingsComponent", () => {
                   declarations: [SettingsComponent],
                   imports: [FormsModule, ReactiveFormsModule],
                   providers: [provideMockStore({})],
+                  schemas: [CUSTOM_ELEMENTS_SCHEMA],
             }).compileComponents();
 
             fixture = TestBed.createComponent(SettingsComponent);

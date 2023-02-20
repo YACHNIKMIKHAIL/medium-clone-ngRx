@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { RegisterComponent } from "./register.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { provideMockStore } from "@ngrx/store/testing";
+import { NO_ERRORS_SCHEMA } from "@angular/core";
 
 describe("RegisterComponent", () => {
       let component: RegisterComponent;
@@ -13,6 +14,7 @@ describe("RegisterComponent", () => {
                   declarations: [RegisterComponent],
                   imports: [FormsModule, ReactiveFormsModule],
                   providers: [provideMockStore({})],
+                  schemas: [NO_ERRORS_SCHEMA],
             }).compileComponents();
 
             fixture = TestBed.createComponent(RegisterComponent);
