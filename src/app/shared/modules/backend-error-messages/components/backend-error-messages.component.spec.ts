@@ -13,6 +13,7 @@ describe("BackendErrorMessagesComponent", () => {
 
             fixture = TestBed.createComponent(BackendErrorMessagesComponent);
             component = fixture.componentInstance;
+            component.backendErrorsProps = {};
             fixture.detectChanges();
       });
 

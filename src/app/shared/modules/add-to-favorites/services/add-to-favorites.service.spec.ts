@@ -1,12 +1,15 @@
 import { TestBed } from "@angular/core/testing";
 
 import { AddToFavoritesService } from "./add-to-favorites.service";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 
 describe("ArticleService", () => {
       let service: AddToFavoritesService;
 
       beforeEach(() => {
-            TestBed.configureTestingModule({});
+            TestBed.configureTestingModule({
+                  imports: [HttpClientTestingModule],
+            });
             service = TestBed.inject(AddToFavoritesService);
       });
 
