@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { FeedToggleComponent } from "./feed-toggle.component";
+import { provideMockStore } from "@ngrx/store/testing";
 
 describe("ToggleFeedComponent", () => {
       let component: FeedToggleComponent;
@@ -9,6 +10,7 @@ describe("ToggleFeedComponent", () => {
       beforeEach(async () => {
             await TestBed.configureTestingModule({
                   declarations: [FeedToggleComponent],
+                  providers: [provideMockStore({})],
             }).compileComponents();
 
             fixture = TestBed.createComponent(FeedToggleComponent);

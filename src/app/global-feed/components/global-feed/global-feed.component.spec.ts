@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { GlobalFeedComponent } from "./global-feed.component";
+import { provideMockStore } from "@ngrx/store/testing";
 
 describe("GlobalFeedComponent", () => {
       let component: GlobalFeedComponent;
@@ -9,6 +10,7 @@ describe("GlobalFeedComponent", () => {
       beforeEach(async () => {
             await TestBed.configureTestingModule({
                   declarations: [GlobalFeedComponent],
+                  providers: [provideMockStore({})],
             }).compileComponents();
 
             fixture = TestBed.createComponent(GlobalFeedComponent);
