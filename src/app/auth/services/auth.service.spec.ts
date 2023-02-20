@@ -30,25 +30,22 @@ describe("AuthService", () => {
             };
             service.register(data).subscribe(resp => {
                   expect(resp).toBeTruthy();
-                  expect(resp.email).toBe("string1");
+                  expect(resp.email).toBe("string3");
+            });
+            const req = httpTestingController.expectOne(
+                  `${environment.apiUrl}/users`,
+            );
+            expect(req.request.method).toBe("POST");
+            expect(req.request.body.user.username).toBe(data.user.username);
 
-                  const req = httpTestingController.expectOne(
-                        `${environment.apiUrl}/usersss`,
-                  );
-                  expect(req.request.method).toBe("POST");
-                  expect(req.request.body.user.username).toBe(
-                        "data.user.username",
-                  );
-
-                  req.flush({
-                        user: {
-                              bio: "string",
-                              email: "string3",
-                              image: "string",
-                              token: "string",
-                              username: "string",
-                        },
-                  });
+            req.flush({
+                  user: {
+                        bio: "string",
+                        email: "string3",
+                        image: "string",
+                        token: "string",
+                        username: "string",
+                  },
             });
       });
       it("should register", () => {
