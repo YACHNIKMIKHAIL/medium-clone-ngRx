@@ -6,10 +6,13 @@ import {
       HttpTestingController,
 } from "@angular/common/http/testing";
 import { environment } from "../../../environments/environment.prod";
+import { RegisterRequestInterface } from "../types/registerRequest.interface";
 
 describe("AuthService", () => {
       let service: AuthService;
       let httpTestingController: HttpTestingController;
+      let requestData: RegisterRequestInterface;
+      let responseData: any;
 
       beforeEach(() => {
             TestBed.configureTestingModule({
@@ -18,49 +21,104 @@ describe("AuthService", () => {
             });
             service = TestBed.inject(AuthService);
             httpTestingController = TestBed.inject(HttpTestingController);
-      });
 
-      it("should be created", () => {
-            const data = {
+            requestData = {
                   user: {
-                        username: "string",
-                        email: "string2",
+                        username: "Vasya",
+                        email: "vasiya@dog.bla",
                         password: "string44",
                   },
             };
-            service.register(data).subscribe(resp => {
+
+            responseData = {
+                  user: {
+                        bio: "string",
+                        email: "vasiya@dog.bla",
+                        image: "string",
+                        token: "string",
+                        username: "Vasya",
+                  },
+            };
+      });
+
+      it("should be created", () => {
+            expect(service).toBeTruthy();
+      });
+
+      it("should register", () => {
+            service.register(requestData).subscribe(resp => {
                   expect(resp).toBeTruthy();
-                  expect(resp.email).toBe("string3");
+                  expect(resp.email).toBe(requestData.user.email);
+                  expect(resp.username).toBe(requestData.user.username);
             });
             const req = httpTestingController.expectOne(
                   `${environment.apiUrl}/users`,
             );
             expect(req.request.method).toBe("POST");
-            expect(req.request.body.user.username).toBe(data.user.username);
+            expect(req.request.body.user.username).toBe(
+                  requestData.user.username,
+            );
 
-            req.flush({
-                  user: {
-                        bio: "string",
-                        email: "string3",
-                        image: "string",
-                        token: "string",
-                        username: "string",
-                  },
-            });
-      });
-      it("should register", () => {
-            pending();
+            req.flush(responseData);
       });
       it("should login", () => {
-            pending();
+            const data = {
+                  user: {
+                        email: "string13",
+                        password: "string123",
+                  },
+            };
+            service.login(data).subscribe(resp => {
+                  expect(resp).toBeTruthy();
+                  expect(resp.username).toBe(requestData.user.username);
+            });
+            const req = httpTestingController.expectOne(
+                  `${environment.apiUrl}/users/login`,
+            );
+            expect(req.request.method).toBe("POST");
+            expect(req.request.body.user.email).toBe(data.user.email);
+
+            req.flush(responseData);
       });
       it("should getCurrentUser", () => {
-            pending();
+            service.getCurrentUser().subscribe(resp => {
+                  expect(resp).toBeTruthy();
+                  expect(resp.username).toBe(requestData.user.username);
+            });
+            const req = httpTestingController.expectOne(
+                  `${environment.apiUrl}/user`,
+            );
+            expect(req.request.method).toBe("GET");
+
+            req.flush(responseData);
       });
       it("should updateCurrentUser", () => {
-            pending();
+            const data = {
+                  ...responseData.user,
+                  password: "string44",
+            };
+            service.updateCurrentUser(data).subscribe(resp => {
+                  expect(resp).toBeTruthy();
+                  expect(resp.email).toBe(data.email);
+                  expect(resp.image).toBe(data.image);
+                  expect(resp.token).toBe(data.token);
+            });
+            const req = httpTestingController.expectOne(
+                  `${environment.apiUrl}/user`,
+            );
+            expect(req.request.method).toBe("PUT");
+            expect(req.request.body.username).toBe(data.username);
+            expect(req.request.body.image).toBe(data.image);
+
+            req.flush(responseData.user);
       });
       it("should logoutCurrentUser", () => {
-            pending();
+            service.logoutCurrentUser().subscribe(() => {});
+            const req = httpTestingController.expectOne(
+                  `${environment.apiUrl}/user`,
+            );
+            expect(req.request.method).toBe("DELETE");
+
+            req.flush(responseData.user);
       });
 });
