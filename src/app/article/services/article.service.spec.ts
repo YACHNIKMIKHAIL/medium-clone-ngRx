@@ -24,14 +24,13 @@ describe("ArticleService", () => {
       });
 
       it("should deleteArticle", () => {
-            service.deleteArticle("slug").subscribe(() => {
-                  const req = httpTestingController.expectOne(
-                        `${environment.apiUrl}/articles/slug`,
-                  );
-                  expect(req.request.method).toBe("GET");
+            service.deleteArticle("slug").subscribe(() => {});
+            const req = httpTestingController.expectOne(
+                  `${environment.apiUrl}/articles/slug`,
+            );
+            expect(req.request.method).toBe("DELETE");
 
-                  req.flush({});
-                  httpTestingController.verify();
-            });
+            req.flush({});
+            httpTestingController.verify();
       });
 });
