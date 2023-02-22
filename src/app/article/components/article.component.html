@@ -1,7 +1,7 @@
 <div class="article-page">
       <div class="banner">
             <div class="container" *ngIf="article"
-                  ><h1>{{ article.title }} </h1>
+                  ><h1>{{ article.title }}</h1>
                   <div class="article-meta"
                         ><a
                               [routerLink]="[
@@ -18,8 +18,8 @@
                                     [routerLink]="[
                                           '/profiles',
                                           article.author.username
-                                    ]">
-                                    {{ article.author.username }} </a
+                                    ]"
+                                    >{{ article.author.username }}</a
                               ><span class="date">
                                     {{ article.updatedAt | date }}
                               </span></div
@@ -42,8 +42,7 @@
                         ><span *ngIf="!(isAuthor$ | async)">
                               <button
                                     class="btn btn-sm action-btn btn-secondary"
-                                    ><i class="ion-plus-round"></i>
-                                    &nbsp; Unfollow
+                                    ><i class="ion-plus-round"></i>Unfollow
                                     {{ article.author.username }}
                               </button>
                               <mc-add-to-favorites
@@ -82,7 +81,10 @@
                                     <div class="info"
                                           ><a
                                                 class="author"
-                                                href="/profile/Anah%20Bene%C5%A1ov%C3%A1">
+                                                [routerLink]="[
+                                                      '/profiles',
+                                                      article.author.username
+                                                ]">
                                                 {{
                                                       article.author.username
                                                 }} </a
@@ -109,8 +111,8 @@
                                     ><span *ngIf="!(isAuthor$ | async)">
                                           <button
                                                 class="btn btn-sm action-btn btn-secondary"
-                                                ><i class="ion-plus-round"></i>
-                                                &nbsp; Unfollow
+                                                ><i class="ion-plus-round"></i
+                                                >Unfollow
                                                 {{ article.author.username }}
                                           </button>
                                           <mc-add-to-favorites
@@ -172,7 +174,7 @@
 </div>
 <footer>
       <div class="container"
-            ><a class="logo-font" routerlink="/" href="/">conduit</a
+            ><a class="logo-font" [routerLink]="['/']">conduit</a
             ><span class="attribution">
                   © 2023. An interactive learning project from
                   <a href="https://thinkster.io">Thinkster</a>. Code licensed
