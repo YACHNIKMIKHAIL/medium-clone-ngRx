@@ -1,7 +1,4 @@
-import {
-      ComponentFixture,
-      TestBed,
-} from "@angular/core/testing";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { SettingsComponent } from "./settings.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
