@@ -9,7 +9,7 @@ import { Observable } from "rxjs";
       styleUrls: ["./global-feed.component.scss"],
 })
 export class GlobalFeedComponent implements OnInit {
-      public url = "/articles"; //"/articles/feed?limit=10&off"
+      public url = "/articles";
       public isLoggedIn$ = new Observable<boolean | null>();
 
       constructor(private store: Store) {}
