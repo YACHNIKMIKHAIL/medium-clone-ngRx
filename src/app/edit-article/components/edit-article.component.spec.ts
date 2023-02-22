@@ -43,7 +43,6 @@ describe("EditArticleComponent", () => {
             component.editableArticle = of({});
             fixture.detectChanges();
             const articleComp = element.query(By.css("mc-article-form"));
-            console.log(articleComp);
 
             expect(articleComp).toBeTruthy();
       });
