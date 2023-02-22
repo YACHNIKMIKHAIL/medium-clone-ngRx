@@ -1,9 +1,6 @@
 import {
       ComponentFixture,
-      fakeAsync,
-      flush,
       TestBed,
-      tick,
 } from "@angular/core/testing";
 
 import { SettingsComponent } from "./settings.component";
