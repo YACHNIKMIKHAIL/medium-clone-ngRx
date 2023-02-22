@@ -34,7 +34,9 @@ describe("RegisterComponent", () => {
             component.backendErrors$ = of({ error: ["some err"] });
             fixture.detectChanges();
 
-            const errorElement = element.query(By.css("mc-backend-error-message"));
+            const errorElement = element.query(
+                  By.css("mc-backend-error-message"),
+            );
             fixture.detectChanges();
 
             expect(errorElement).toBeTruthy();
